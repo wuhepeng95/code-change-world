@@ -1,0 +1,12 @@
+极致精简的webservice例子
+
+参考网页；https://www.cnblogs.com/fengwenzhee/p/6915606.html
+
+示例实现过程：
+    1、创建WebService(注意实现类也要加@WebService注解)
+    2、发布上述创建的WebService 提前设定好地址(http://localhost:8089/WS_Server/MyWebService)
+    3、访问地址(http://localhost:8089/WS_Server/MyWebService?wsdl)，确认发布成功
+    4、使用命令wsimport /Users/whp/workspace-idea/code-change-world/mywebservice-demo/src -keep http://localhost:8089/WS_Server/MyWebService?wsdl
+    5、创建客户端，执行，访问成功
+
+    wsimport是jdk自带的命令,可以根据wsdl文档生成客户端中间代码,基于生成的代码编写客户端,可以省很多麻烦。-keep保留原java代码

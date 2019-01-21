@@ -1,0 +1,17 @@
+.settings/
+.idea/
+.DS_Store
+target/
+classes/
+bin/
+logs/
+*.log
+*.md
+*.un~
+*.iml
+*.swp
+.metadata/
+.recommenders/
+.classpath
+.project
+rebel.xml

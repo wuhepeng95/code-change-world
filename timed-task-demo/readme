@@ -1,0 +1,13 @@
+Java的定时任务实现有三种:
+一种是使用JDK自带的Timer那个类来实现，->pattern1
+另一种是使用quartz框架来实现，->pattern2
+最后一种是在项目使用Spring框架的情况下用Spring框架来实现。->pattern3
+
+Quartz 依赖croe，context，beans，spring-context-support，quartz，jdbc
+第一种作业类继承自特定的基类org.springframework.scheduling.quartz.QuartzJobBean
+第二种作业类不继承特定基类
+Spring-Task
+第一种配置文件方式
+第二种使用注解形式 必须加<task:annotation-driven/>
+
+参考文档：https://blog.csdn.net/java_2017_csdn/article/details/77370140
