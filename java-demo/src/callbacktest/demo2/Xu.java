@@ -12,17 +12,19 @@ public class Xu implements CallBack {
 
     /**
      * 小徐的构造方法，持有小超的引用
+     *
      * @param xc
      */
-    public Xu(Xc xc){
+    public Xu(Xc xc) {
         this.xc = xc;
     }
 
     /**
      * 小徐通过这个方法去问小超的问题
-     * @param question  就是小徐要问的问题,做我女朋友好吗?
+     *
+     * @param question 就是小徐要问的问题,做我女朋友好吗?
      */
-    public void askQuestion(final String question){
+    public void askQuestion(final String question) {
         //这里用一个线程就是异步，
         new Thread(new Runnable() {
             @Override
@@ -39,7 +41,7 @@ public class Xu implements CallBack {
         play();
     }
 
-    public void play(){
+    public void play() {
         System.out.println("我要去打篮球了");
     }
 

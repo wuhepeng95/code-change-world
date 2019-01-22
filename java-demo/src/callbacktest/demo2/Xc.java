@@ -5,11 +5,11 @@ package callbacktest.demo2;
  */
 public class Xc {
 
-    public void executeMessage(CallBack callBack, String question){
+    public void executeMessage(CallBack callBack, String question) {
         System.out.println("小徐问的问题--->" + question);
 
         //模拟小超要睡觉了，加入睡了很长时间
-        for(int i=0; i<2000000000;i++){
+        for (int i = 0; i < 2000000000; i++) {
 
         }
 
@@ -23,8 +23,6 @@ public class Xc {
          * 这就相当于B类反过来调用A的方法D
          */
         callBack.solve(result);
-
-
 
     }
 

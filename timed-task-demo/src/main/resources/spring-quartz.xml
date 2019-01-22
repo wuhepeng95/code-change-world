@@ -2,8 +2,6 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-
-
     <!-- 定时任务start -->
     <!-- 线程执行器配置，用于任务注册 -->
     <bean id="executor"
@@ -12,22 +10,18 @@
         <property name="maxPoolSize" value="100"/>
         <property name="queueCapacity" value="500"/>
     </bean>
-
     <!-- 业务对象 -->
     <bean id="demo" class="pattern2.Demo"/>
-
     <!-- 调度业务 -->
     <bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
         <property name="targetObject" ref="demo"/>
         <property name="targetMethod" value="method"/>
     </bean>
-
     <!-- 增加调用的触发器，触发时间 -->
     <bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="jobDetail"/>
         <property name="cronExpression" value="*/1 * * * * ? *"/>
     </bean>
-
     <!-- 设置调度 -->
     <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
         <property name="triggers">
@@ -38,5 +32,4 @@
         <property name="taskExecutor" ref="executor"/>
     </bean>
     <!-- 定时任务end -->
-
 </beans>

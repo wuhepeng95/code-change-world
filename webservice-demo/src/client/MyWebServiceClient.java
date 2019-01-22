@@ -14,6 +14,6 @@ public class MyWebServiceClient {
 
         String result = myWebServiceImplPort.sayHello("我是客户端哇");
 
-        System.out.println("调用结果："+result);
+        System.out.println("调用结果：" + result);
     }
 }

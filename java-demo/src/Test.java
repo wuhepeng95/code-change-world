@@ -1,8 +1,5 @@
-import jnr.ffi.annotations.In;
-
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 public class Test {
 
@@ -15,7 +12,6 @@ public class Test {
         System.err.println("这个线程怎么回事啊!");
         //jvm 内部存储编码为Unicode
         System.out.println(System.getProperty("file.encoding"));
-
 
         System.currentTimeMillis();
 

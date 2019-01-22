@@ -27,7 +27,6 @@ public class ExecutorServer {
 
                 PrintWriter printWriter = new PrintWriter(outputStream, true);
 
-
                 String html = "http/1.1 200 ok\n" + "\n\n" + "访问成功";
 
                 printWriter.write(html);

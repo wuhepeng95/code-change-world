@@ -14,8 +14,8 @@ public class BatchRenameFile {
         for (File oneFile : listFiles) {
             if (oneFile.length() > 100000) {
                 Random random = new Random();
-                System.out.println(oneFile.getName()+"重命名....");
-                oneFile.renameTo(new File(oneFile.getParent() +File.separator+ "windows聚焦壁纸-" +random.nextInt(34567) + ".jpg"));
+                System.out.println(oneFile.getName() + "重命名....");
+                oneFile.renameTo(new File(oneFile.getParent() + File.separator + "windows聚焦壁纸-" + random.nextInt(34567) + ".jpg"));
             }
         }
     }

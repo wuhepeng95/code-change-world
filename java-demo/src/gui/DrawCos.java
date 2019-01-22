@@ -1,6 +1,5 @@
 package gui;
 
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -35,7 +34,7 @@ class CosJpanel extends JPanel {
 
     @Override
     public void paint(Graphics g) {
-        super.paint(g); 
+        super.paint(g);
         g.setColor(Color.BLACK);
         // 画x轴、y轴
         for (x = 0; x <= 750; x += 1) {

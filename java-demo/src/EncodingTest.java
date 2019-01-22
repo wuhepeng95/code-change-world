@@ -2,12 +2,12 @@ import sockettest.URLDemo;
 
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.Arrays;
 
 /**
  * Created by whp on 2018/8/31
+ *
  * @see URLDemo
  */
 public class EncodingTest {
@@ -37,7 +37,7 @@ public class EncodingTest {
         System.out.println("]");
         int hex = 0x4e0a;
         System.out.println("十六进制转为二进制:" + Integer.toBinaryString(hex));
-        System.out.println("&#19978;纯十进制:"+Integer.valueOf("100111000001010",2));
+        System.out.println("&#19978;纯十进制:" + Integer.valueOf("100111000001010", 2));
 
         /**
          * URL参数编码

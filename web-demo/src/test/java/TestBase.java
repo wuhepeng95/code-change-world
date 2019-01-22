@@ -1,4 +1,3 @@
-import i.am.whp.bean.WhpTest;
 import i.am.whp.bean.WhpTest2;
 import i.am.whp.dao.WhpTestDao;
 import org.junit.Test;
@@ -20,9 +19,9 @@ public class TestBase {
 
     @Test
     public void list() {
-        Map<String,Object> param = new HashMap<>();
-        param.put("pageSize",10);
-        param.put("startIndex",1);
+        Map<String, Object> param = new HashMap<>();
+        param.put("pageSize", 10);
+        param.put("startIndex", 1);
         List<WhpTest2> getall = whpTestDao.getall(param);
         Integer count = whpTestDao.count(param);
         System.out.println(count);
@@ -33,9 +32,9 @@ public class TestBase {
 
     @Test
     public void thread() {
-        Map<String,Object> param = new HashMap<>();
-        param.put("pageSize",10);
-        param.put("startIndex",1);
+        Map<String, Object> param = new HashMap<>();
+        param.put("pageSize", 10);
+        param.put("startIndex", 1);
 
         //创建现场池
         ExecutorService executorService = Executors.newCachedThreadPool();
@@ -47,7 +46,7 @@ public class TestBase {
             @Override
             public List<WhpTest2> call() throws Exception {
                 // 先暂停两秒
-                System.out.println("我是"+Thread.currentThread().getName()+"，我暂停了两秒。如果想get()我的值，得先等我执行完return ^.^");
+                System.out.println("我是" + Thread.currentThread().getName() + "，我暂停了两秒。如果想get()我的值，得先等我执行完return ^.^");
                 TimeUnit.SECONDS.sleep(2);
                 return whpTestDao.getall(param);
             }
@@ -64,7 +63,7 @@ public class TestBase {
         try {
             System.out.println("获取查询结果集：");
             submit.get().forEach(whpTest2 -> System.out.println(whpTest2.toString()));
-            System.out.println("获取查询结果数量："+(int)submit1.get());
+            System.out.println("获取查询结果数量：" + (int) submit1.get());
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }

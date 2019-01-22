@@ -19,7 +19,6 @@ public class AppleProcessor {
                 }
             }
 
-
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

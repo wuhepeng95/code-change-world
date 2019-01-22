@@ -1,6 +1,5 @@
 package proxystatic;
 
-
 import proxydynamic.MyProxy;
 
 /**

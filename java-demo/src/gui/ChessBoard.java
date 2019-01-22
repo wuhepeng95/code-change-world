@@ -19,10 +19,8 @@ public class ChessBoard {
 
         int[] ints = new int[10];
 
-
         ArrayList list = new ArrayList();
         list.add("123");
-
 
         int grids = 8;                                        //行数和列数
         int gridsize = 20;                                //单元格的高和宽

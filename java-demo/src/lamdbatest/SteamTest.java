@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- *()->{}替换匿名类
+ * ()->{}替换匿名类
  * :: 静态方法引用
  */
 public class SteamTest {
@@ -15,16 +15,16 @@ public class SteamTest {
          * filter(条件) 过滤
          */
         List<Integer> list = Arrays.asList(1, 1, 3, 4, 5, 6, 7, 8, 9);
-        System.out.println("使用filter过滤小于4的值"+list.stream().filter(integer -> integer < 4).collect(Collectors.toList()));
+        System.out.println("使用filter过滤小于4的值" + list.stream().filter(integer -> integer < 4).collect(Collectors.toList()));
         /**
          * map()集体转换
          */
-        System.out.println("使用map集体操作"+list.stream().map(i -> String.valueOf(i).concat("添加内容")).collect(Collectors.toList()));
+        System.out.println("使用map集体操作" + list.stream().map(i -> String.valueOf(i).concat("添加内容")).collect(Collectors.toList()));
 
         /**
          * distinct() 去重
          */
-        System.out.println("使用distinct去重"+list.stream().distinct().collect(Collectors.toList()));
+        System.out.println("使用distinct去重" + list.stream().distinct().collect(Collectors.toList()));
         /**
          * iterate() 重复迭代
          * limit(数字) 限定最大长度

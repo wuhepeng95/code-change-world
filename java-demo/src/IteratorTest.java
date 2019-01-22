@@ -14,11 +14,11 @@ public class IteratorTest {
         list.add("2");
         list.add("3");//会报错使用Iterator就不会
         // 使用for循环 不能删除干净
-         for (String item : list) {
-             if ("2".equals(item)) {
-                 list.remove(item);
-             }
-         }
+        for (String item : list) {
+            if ("2".equals(item)) {
+                list.remove(item);
+            }
+        }
         //使用迭代器 这样才行
 //        Iterator iterator = list.iterator();
 //        while (iterator.hasNext()) {

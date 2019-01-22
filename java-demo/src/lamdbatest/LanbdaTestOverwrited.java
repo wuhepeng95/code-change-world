@@ -1,6 +1,5 @@
 package lamdbatest;
 
-
 public class LanbdaTestOverwrited {
     public static void main(String[] args) {
         SayMessahe sayMessahe = System.out::println;

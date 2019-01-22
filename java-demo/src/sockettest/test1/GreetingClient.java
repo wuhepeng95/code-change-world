@@ -1,11 +1,8 @@
 package sockettest.test1;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.Socket;
+
 /**
  * Created by wuhp on 2018/2/7
  */

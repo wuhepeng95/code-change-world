@@ -15,11 +15,9 @@ public class DirtyRead {
         System.out.println("更新用户信息姓名为：" + userName + "密码为：" + password);
     }
 
-
     public void queryUser() {
         System.out.println("获取用户信息姓名：" + userName + "密码：" + password);
     }
-
 
     public static void main(String[] args) {
         final DirtyRead dirtyread = new DirtyRead();

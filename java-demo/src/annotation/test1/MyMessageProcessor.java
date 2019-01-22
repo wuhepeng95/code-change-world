@@ -1,7 +1,5 @@
 package annotation.test1;
 
-import annotation.test1.MyMessage;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 

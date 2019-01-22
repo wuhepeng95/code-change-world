@@ -1,11 +1,10 @@
 package gui;
 
-
 import javax.swing.*;
 import java.awt.*;
 
 /**
- *浮动的字符：线程+GUI
+ * 浮动的字符：线程+GUI
  */
 public class FloatChar extends JFrame {
     private static final long serialVersionUID = 1L;

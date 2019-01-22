@@ -4,7 +4,6 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.net.URL;
 
 /**
  * 二维码生成
@@ -70,6 +69,6 @@ public class QrcodeImg {
 
     public static void main(String[] args) {
         String path = QrcodeImg.class.getResource("").getPath();
-        getQrcodeImg("http://www.baidu.com", path+"../images/qrcode.png");
+        getQrcodeImg("http://www.baidu.com", path + "../images/qrcode.png");
     }
 }

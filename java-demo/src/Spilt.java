@@ -9,7 +9,7 @@ public class Spilt {
         String index = "begin";
         int num = 1;
         for (int i = 0; i < split.length; i++) {
-            if (!index.equals(split[i])){
+            if (!index.equals(split[i])) {
                 index = split[i];
                 num = 1;
             }

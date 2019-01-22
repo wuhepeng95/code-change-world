@@ -1,6 +1,5 @@
 package annotation.test2;
 
-
 public class Apple {
     @FruitColor(fruitColor = FruitColor.Yanse.RED)
     private FruitColor.Yanse fruitColor;

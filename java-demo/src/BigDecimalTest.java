@@ -11,7 +11,7 @@ public class BigDecimalTest {
         //乘法
         System.out.println(bigDecimal.multiply(bigDecimal2));
         //除法
-        System.out.println(bigDecimal.divide(bigDecimal2,5, RoundingMode.FLOOR));
+        System.out.println(bigDecimal.divide(bigDecimal2, 5, RoundingMode.FLOOR));
         //加法
         System.out.println(bigDecimal.add(bigDecimal2));
     }

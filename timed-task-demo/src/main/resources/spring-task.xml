@@ -5,7 +5,6 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-
     <bean id="demo1" class="pattern3.Demo"/>
     <task:scheduled-tasks>
         <task:scheduled ref="demo1" method="method" cron="*/1 * * * * ?"/>

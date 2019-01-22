@@ -8,7 +8,6 @@
  * 解析：把类型中的符号引用转换为直接引用
  */
 
-
 class SingleTon {
     private static SingleTon singleTon = new SingleTon();
 

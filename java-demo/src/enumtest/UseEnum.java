@@ -7,7 +7,6 @@ public class UseEnum {
     public static void main(String[] args) {
         WeekDayEnumX mon = WeekDayEnumX.MON;
 
-
-        String str  = "123132"+mon.toString()+"1231";
+        String str = "123132" + mon.toString() + "1231";
     }
 }

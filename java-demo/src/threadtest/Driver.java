@@ -36,7 +36,7 @@ class Worker implements Runnable {
 
     public void run() {
         try {
-            System.out.println("进入"+Thread.currentThread().getName());
+            System.out.println("进入" + Thread.currentThread().getName());
             startSignal.await(); // 等待Driver线程执行完毕，获得开始信号
             System.out.println("Working now ...");
             doneSignal.countDown(); // 当前worker执行完毕，释放一个完成信号
