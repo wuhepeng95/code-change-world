@@ -12,7 +12,7 @@
         where id = #{id}
     </select>
     <!-- 查询接口 -->
-    <select id="getall" parameterType="map" resultMap="baseMap">
+    <select id="getall" parameterType="map" resultType="i.am.whp.bean.WhpTest2">
         select a.* from whp_test a
         <trim prefix="WHERE" prefixOverrides="AND | OR">
             <if test="message != null and message != ''">AND a.message = #{message}</if>
