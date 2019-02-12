@@ -37,7 +37,7 @@ public class TestCheckTreeRecursive {
                 }
             }
             return 3;
-            //没有子级
+            //没有子级，且父级没被引用
         }
 
         // FINAL
