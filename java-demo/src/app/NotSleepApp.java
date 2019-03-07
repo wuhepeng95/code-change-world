@@ -1,8 +1,10 @@
+package app;
+
 import java.awt.*;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class NotSleep {
+public class NotSleepApp {
     static int x = 0;
     static int y = 0;
 

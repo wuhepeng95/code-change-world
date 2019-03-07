@@ -1,15 +1,15 @@
-package fileiotest;
+package app;
 
 import java.io.File;
 
-public class ClearWorkspace {
+public class ClearWorkspaceApp {
 
     /**
      * 主方法
      * * @param args
      */
     public static void main(String[] args) {
-        String filePath = "D:\\workspace-idea";
+        String filePath = "/Users/whp/workspace-zdxf";
         File fileDic = new File(filePath);
         if (fileDic.isDirectory()) {
             System.out.println("begin Scan");
