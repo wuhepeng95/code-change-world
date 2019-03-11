@@ -64,13 +64,13 @@ public class SyncTest {
         System.out.println();
     }
 
-
 //    相当于外部类
 //    static class OuterClass{
 //    }
 }
+
 // 相当于静态内部类
-class OuterClass{
+class OuterClass {
     public static void output(String arg) {
         int length = arg.length();
         for (int i = 0; i < length; i++) {

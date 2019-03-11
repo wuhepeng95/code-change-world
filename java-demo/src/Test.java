@@ -1,7 +1,6 @@
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.collections4.Transformer;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class Test {
@@ -34,14 +33,33 @@ public class Test {
         List<String> strings = Collections.singletonList(asList);
         String fiveMethodTypeStr = strings.stream().map(s -> s + ",").collect(Collectors.joining());
 
-        System.out.println(fiveMethodTypeStr.substring(0,fiveMethodTypeStr.lastIndexOf(",")));
-        System.out.println(fiveMethodTypeStr.endsWith(",") ? fiveMethodTypeStr.substring(0,fiveMethodTypeStr.length() -1) : fiveMethodTypeStr );
+        System.out.println(fiveMethodTypeStr.substring(0, fiveMethodTypeStr.lastIndexOf(",")));
+        System.out.println(fiveMethodTypeStr.endsWith(",") ? fiveMethodTypeStr.substring(0, fiveMethodTypeStr.length() - 1) : fiveMethodTypeStr);
 
         String ss = "12345678";
         System.out.println(ss.length());
         // subString是 从beginIndex开始，不包含endIndex
-        System.out.println(ss.substring(1,2));
+        System.out.println(ss.substring(1, 2));
         System.out.println("v" + (Integer.parseInt("v1.0".substring(1, 2)) + 1) + ".0");
+
+        List<String> listA = new ArrayList<>();
+        listA.add("1");
+        listA.add("2");
+
+        List<String> listB = new ArrayList<>();
+        listB.add("2");
+        listB.add("3");
+
+        // 交集
+//        listA.retainAll(listB);
+//        System.out.println("listA = " + listA);
+//        // 差集
+//        listA.removeAll(listB);
+//        System.out.println("listA = " + listA);
+        // 并集
+        listA.removeAll(listB);
+        listA.addAll(listB);
+        System.out.println("listA = " + listA);
 
     }
 }
