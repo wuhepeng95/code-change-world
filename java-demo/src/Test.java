@@ -63,7 +63,7 @@ public class Test {
 
         //我能push到master吗
         //在没设置之前是可以的（即github默认情况下）
-        //设置之后
+        //设置之后就不可以了，不能跨分支push，跨分支需要merge
 
     }
 }
