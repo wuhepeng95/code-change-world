@@ -63,6 +63,7 @@ public class Test {
 
         //我能push到master吗
         //在没设置之前是可以的（即github默认情况下）
+        //设置之后
 
     }
 }
