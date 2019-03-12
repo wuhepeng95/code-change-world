@@ -62,6 +62,7 @@ public class Test {
         System.out.println("listA = " + listA);
 
         //我能push到master吗
+        //在没设置之前是可以的（即github默认情况下）
 
     }
 }
