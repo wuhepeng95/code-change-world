@@ -20,20 +20,22 @@
         </plugins>
     </build>
     <modules>
+        <module>java-demo</module>
         <module>timed-task-demo</module>
         <module>web-demo</module>
+        <module>webservice-demo</module>
     </modules>
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.eclipse.jdt.core.compiler/ecj -->
-        <dependency>
-            <groupId>org.eclipse.jdt.core.compiler</groupId>
-            <artifactId>ecj</artifactId>
-            <version>4.4.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml</artifactId>
-            <version>3.10-FINAL</version>
-        </dependency>
+        <!--        eclipse编辑插件-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.eclipse.jdt.core.compiler</groupId>-->
+        <!--            <artifactId>ecj</artifactId>-->
+        <!--            <version>4.4.2</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.poi</groupId>-->
+        <!--            <artifactId>poi-ooxml</artifactId>-->
+        <!--            <version>3.10-FINAL</version>-->
+        <!--        </dependency>-->
     </dependencies>
 </project>
