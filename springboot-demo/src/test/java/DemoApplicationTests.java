@@ -1,4 +1,5 @@
 import i.am.whp.DemoApplication;
+import i.am.whp.model.MyBean;
 import i.am.whp.service.MyService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,8 +13,16 @@ public class DemoApplicationTests {
 
     @Autowired
     MyService myService;
+    @Autowired
+    MyBean myBean;
+
     @Test
     public void contextLoads() {
         myService.hi();
+    }
+
+    @Test
+    public void setProfile() {
+        System.out.println(myBean.getName());
     }
 }

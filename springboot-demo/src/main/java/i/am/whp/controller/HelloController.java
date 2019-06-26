@@ -1,4 +1,4 @@
-package i.am.whp.web;
+package i.am.whp.controller;
 
 import com.alibaba.fastjson.JSON;
 import i.am.whp.service.MyService;
