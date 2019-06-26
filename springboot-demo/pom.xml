@@ -50,6 +50,12 @@
             <version>2.1.6.RELEASE</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+
         <!-- test依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -78,7 +84,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>i.am.whp.web.DemoApplication</mainClass>
+                    <mainClass>i.am.whp.DemoApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>
