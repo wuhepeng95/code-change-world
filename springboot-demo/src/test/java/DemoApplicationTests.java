@@ -1,4 +1,5 @@
 import i.am.whp.DemoApplication;
+import i.am.whp.mapper.PhoneNumberDeviceRelationMapper;
 import i.am.whp.model.MyBean;
 import i.am.whp.service.MyService;
 import org.junit.Test;
@@ -15,6 +16,8 @@ public class DemoApplicationTests {
     MyService myService;
     @Autowired
     MyBean myBean;
+    @Autowired
+    PhoneNumberDeviceRelationMapper phoneNumberDeviceRelationMapper;
 
     @Test
     public void contextLoads() {
@@ -24,5 +27,10 @@ public class DemoApplicationTests {
     @Test
     public void setProfile() {
         System.out.println(myBean.getName());
+    }
+
+    @Test
+    public void testDao() {
+        System.out.println(phoneNumberDeviceRelationMapper.getById(1));
     }
 }
