@@ -1,6 +1,7 @@
+import com.alibaba.fastjson.JSON;
 import i.am.whp.DemoApplication;
 import i.am.whp.mapper.PhoneNumberDeviceRelationMapper;
-import i.am.whp.model.MyBean;
+import i.am.whp.test.MyBean;
 import i.am.whp.service.MyService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +22,7 @@ public class DemoApplicationTests {
 
     @Test
     public void contextLoads() {
-        myService.hi();
+        System.out.println(myService.hi());
     }
 
     @Test
@@ -31,6 +32,6 @@ public class DemoApplicationTests {
 
     @Test
     public void testDao() {
-        System.out.println(phoneNumberDeviceRelationMapper.getById(1));
+        System.out.println(JSON.toJSONString(phoneNumberDeviceRelationMapper.getById(1)));
     }
 }

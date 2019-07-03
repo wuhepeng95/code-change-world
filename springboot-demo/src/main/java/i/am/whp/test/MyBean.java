@@ -1,4 +1,4 @@
-package i.am.whp.model;
+package i.am.whp.test;
 
 public class MyBean {
 
