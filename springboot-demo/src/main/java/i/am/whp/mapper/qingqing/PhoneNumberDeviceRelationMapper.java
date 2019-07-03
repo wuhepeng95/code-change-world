@@ -1,4 +1,4 @@
-package i.am.whp.mapper;
+package i.am.whp.mapper.qingqing;
 
 import i.am.whp.model.PhoneNumberDeviceRelation;
 

@@ -1,6 +1,5 @@
-package i.am.whp.config;
+package i.am.whp.test;
 
-import i.am.whp.test.MyBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

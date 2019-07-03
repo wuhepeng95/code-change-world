@@ -1,8 +1,9 @@
 import com.alibaba.fastjson.JSON;
 import i.am.whp.DemoApplication;
-import i.am.whp.mapper.PhoneNumberDeviceRelationMapper;
-import i.am.whp.test.MyBean;
+import i.am.whp.mapper.aws.MyTableMapper;
+import i.am.whp.mapper.qingqing.PhoneNumberDeviceRelationMapper;
 import i.am.whp.service.MyService;
+import i.am.whp.test.MyBean;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ public class DemoApplicationTests {
     MyBean myBean;
     @Autowired
     PhoneNumberDeviceRelationMapper phoneNumberDeviceRelationMapper;
+    @Autowired
+    MyTableMapper myTableMapper;
 
     @Test
     public void contextLoads() {
@@ -31,7 +34,12 @@ public class DemoApplicationTests {
     }
 
     @Test
-    public void testDao() {
+    public void testDaoQingqing() {
         System.out.println(JSON.toJSONString(phoneNumberDeviceRelationMapper.getById(1)));
+    }
+
+    @Test
+    public void testDaoAws() {
+        System.out.println(JSON.toJSONString(myTableMapper.getById(1)));
     }
 }
