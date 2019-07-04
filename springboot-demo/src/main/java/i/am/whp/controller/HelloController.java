@@ -8,15 +8,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
+@RequestMapping("/")
 public class HelloController {
 
     @Autowired
     MyService myService;
 
-    @RequestMapping("/")
-    @ResponseBody
-    public String index() {
-        return "Greetings from Spring Boot!";
+    @RequestMapping("/index")
+    public String index1() {
+        return "index";
     }
 
     @RequestMapping("/hi")

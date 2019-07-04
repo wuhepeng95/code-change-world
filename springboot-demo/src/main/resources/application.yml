@@ -1,6 +1,12 @@
 server:
   port: 18080
 
+#spring:
+#  mvc:
+#    view:
+#      prefix: /WEB-INF/jsp/ # Read From Web Resources Dir
+#      suffix: .jsp
+
 #配置数据源
 #spring:
 #  datasource:

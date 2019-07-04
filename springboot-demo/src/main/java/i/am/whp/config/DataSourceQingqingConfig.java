@@ -51,35 +51,4 @@ public class DataSourceQingqingConfig {
         bean.setDataSource(dataSource);
         return bean.getObject();
     }
-//    @Bean(name = SQL_SESSION_FACTORY)
-//    public SqlSessionFactory getSqlSessionFactoryData(@Qualifier(DATA_SOURCE_NAME) DataSource dataSource) {
-//        return new SqlSessionManager().;
-//    }
-//
-//
-//    tatic final String WALL_CONFIG = "wallConfig";
-//    @Bean
-//    @DependsOn(WALL_CONFIG)
-//    public WallFilter wallFilter(){
-//        WallFilter wallFilter = new WallFilter();
-//        wallFilter.setConfig(wallConfig());
-//        return wallFilter;
-//    }
-//    @Bean(WALL_CONFIG)
-//    public WallConfig wallConfig(){
-//        WallConfig wallConfig = new WallConfig();
-//        wallConfig.setMultiStatementAllow(true);
-//        wallConfig.setNoneBaseStatementAllow(true);
-//        return wallConfig;
-//    }
-//    @Bean(name = TX_MANAGER)
-//    public DataSourceTransactionManager getTransactionManager(@Qualifier(DATA_SOURCE_NAME) DataSource dataSource) {
-//        return MybatisDataSourceConfigHelper.getTransactionManager(dataSource);
-//    }
-//
-//    @Bean(name = SQL_SESSION_FACTORY)
-//    public SqlSessionFactory getSqlSessionFactoryData(@Qualifier(DATA_SOURCE_NAME) DataSource dataSource) {
-//        return MybatisDataSourceConfigHelper.getSqlSessionFactoryData(Collections.<String>emptyList(), mybatisConfigPath, dataSource);
-//    }
-
 }
