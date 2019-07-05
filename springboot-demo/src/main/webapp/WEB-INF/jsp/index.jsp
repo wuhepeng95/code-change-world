@@ -9,8 +9,27 @@
 <html>
 <head>
     <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
 Welcome!!
+<div id="test">
+    {{status | openStatusFilter}}
+</div>
 </body>
+<script>
+    var test = new Vue({
+        el: "#test",
+        data: {
+            status: 1
+        },
+        filters:{
+            openStatusFilter: function (value) {
+                if (value === -1) return '关闭';
+                if (value === 0) return '开通';
+                if (value === 1) return '暂时开通';
+            }
+        }
+    })
+</script>
 </html>
