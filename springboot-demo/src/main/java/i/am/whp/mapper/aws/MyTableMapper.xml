@@ -6,6 +6,15 @@
     <select id="getById" parameterType="java.lang.Integer" resultType="i.am.whp.model.MyTable">
 		select a.* from my_table a where id = #{id}
 	</select>
+    <select id="getList" resultType="i.am.whp.model.MyTable">
+        select
+          id,name,create_time as createTime
+        from my_table
+        where 1=1
+        <if test="keyword != null and keyword != ''">
+            and name like concat('%',#{keyword},'%')
+        </if>
+    </select>
 
 </mapper>
 
