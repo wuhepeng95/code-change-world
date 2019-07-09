@@ -29,6 +29,7 @@ Welcome!!
     <el-table :data="testList" style="width: 100%">
         <el-table-column prop="id" label="序号" width="180"></el-table-column>
         <el-table-column prop="name" label="姓名" width="180"></el-table-column>
+        <el-table-column prop="status" label="状态"></el-table-column>
         <el-table-column prop="createTime" label="创建日期"></el-table-column>
     </el-table>
 </div>
@@ -56,7 +57,7 @@ Welcome!!
                 }).then(function (response) {
                     this.testList = response.data;//response.data 固定写法
                 }, function (error) {
-                    alert("服务器异常\n" + error);
+                    alert("服务器异常\n" + error.data);
                 })
             }
         }

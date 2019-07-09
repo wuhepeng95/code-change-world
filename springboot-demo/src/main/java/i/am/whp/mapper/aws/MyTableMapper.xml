@@ -3,12 +3,19 @@
 
 <mapper namespace="i.am.whp.mapper.aws.MyTableMapper">
 
-    <select id="getById" parameterType="java.lang.Integer" resultType="i.am.whp.model.MyTable">
+    <resultMap id="baseMap" type="i.am.whp.model.MyTable">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="status" column="status" typeHandler="i.am.whp.handler.StatusHandler"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <select id="getById" parameterType="java.lang.Integer" resultMap="baseMap">
 		select a.* from my_table a where id = #{id}
 	</select>
-    <select id="getList" resultType="i.am.whp.model.MyTable">
+    <select id="getList" resultMap="baseMap">
         select
-          id,name,create_time as createTime
+            *
         from my_table
         where 1=1
         <if test="keyword != null and keyword != ''">

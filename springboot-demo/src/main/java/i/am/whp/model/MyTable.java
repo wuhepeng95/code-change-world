@@ -1,5 +1,8 @@
 package i.am.whp.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import i.am.whp.model.enums.Status;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,6 +12,9 @@ public class MyTable implements Serializable {
 
     private String name;
 
+    private Status status;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date createTime;
 
 
@@ -26,6 +32,14 @@ public class MyTable implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     public Date getCreateTime() {
