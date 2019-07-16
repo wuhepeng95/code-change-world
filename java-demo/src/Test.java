@@ -64,6 +64,15 @@ public class Test {
         //我能push到master吗
         //在没设置之前是可以的（即github默认情况下）
         //设置之后就不可以了，不能跨分支push，跨分支需要merge
+        System.setProperty("java.lang.Integer.IntegerCache.high","12");
+        Integer i1 = 127;
+        Integer i2 = 127;
+        System.out.println(i1 == i2);
+        System.out.println(System.getProperty("java.lang.Integer.IntegerCache.high"));
+        listB =null;
+        for (String s : listB) {
+            System.out.println(s);
+        }
 
     }
 }

@@ -17,11 +17,6 @@ public class HelloController {
     @Autowired
     MyService myService;
 
-    @RequestMapping("/index")
-    public String index1() {
-        return "index";
-    }
-
     @RequestMapping("/hi")
     @ResponseBody
     public String hello() {
