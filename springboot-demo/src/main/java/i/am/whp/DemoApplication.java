@@ -7,7 +7,9 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 //@SpringBootApplication//表示为一个springboot应用：是下面三个注解的合集
@@ -16,7 +18,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @EnableAutoConfiguration
 @ComponentScan(basePackages = {"i.am.whp"})
 //"i.am.whp.service", "i.am.whp.controller","i.am.whp.config"
-public class DemoApplication extends SpringBootServletInitializer {
+public class DemoApplication extends SpringBootServletInitializer implements WebMvcConfigurer {
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
     }
@@ -24,6 +26,12 @@ public class DemoApplication extends SpringBootServletInitializer {
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
         return builder.sources(DemoApplication.class);
+    }
+
+    // 开启静态资源解释器
+    @Override
+    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+        configurer.enable();
     }
 
     @Bean
