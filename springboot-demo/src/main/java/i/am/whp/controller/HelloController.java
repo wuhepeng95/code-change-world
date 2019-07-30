@@ -2,6 +2,7 @@ package i.am.whp.controller;
 
 import com.alibaba.fastjson.JSON;
 import i.am.whp.service.MyService;
+import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +28,7 @@ public class HelloController {
     @RequestMapping("/getData")
     @ResponseBody
     public List getData(@RequestParam("keyword") String keyword) {
+        System.out.println("controller:" + MDC.get("guid"));
         return myService.getData(keyword);
     }
 
