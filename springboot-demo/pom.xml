@@ -117,6 +117,11 @@
             <scope>test</scope>
         </dependency>
 
+        <!--aop-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
     </dependencies>
 
     <!--让mapper下的xml文件编译到class文件中-->

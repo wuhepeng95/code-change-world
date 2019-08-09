@@ -33,7 +33,7 @@ Welcome!!
     <a href="/dialog">弹窗测试</a>
     <%--饿了么UI 表格 --%>
     <el-table :data="testList" style="width: 100%">
-        <el-table-column prop="id" label="序号" width="180" ></el-table-column>
+        <el-table-column prop="id" label="序号" width="180"></el-table-column>
         <el-table-column prop="name" label="姓名" width="180"></el-table-column>
         <el-table-column prop="status" label="状态"></el-table-column>
         <el-table-column prop="createTime" label="创建日期"></el-table-column>

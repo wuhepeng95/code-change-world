@@ -7,12 +7,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PageController {
 
     @RequestMapping("/")
-    public String index1() {
+    public String index() {
         return "index";
     }
 
     @RequestMapping("/dialog")
-    public String test() {
+    public String dialog() {
         return "dialog";
+    }
+
+    @RequestMapping("/expend")
+    public String expend() {
+        return "expend";
     }
 }

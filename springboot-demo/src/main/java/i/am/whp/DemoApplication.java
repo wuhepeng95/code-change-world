@@ -23,11 +23,11 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 //"i.am.whp.service", "i.am.whp.controller","i.am.whp.config"
 public class DemoApplication extends SpringBootServletInitializer implements WebMvcConfigurer {
 
-    public final static Logger LOGGER = LoggerFactory.getLogger(DemoApplication.class);
+    public final static Logger log = LoggerFactory.getLogger(DemoApplication.class);
 
     public static void main(String[] args) {
+        log.info("start springboot project : springboot-demo");
         LogUtils.initGlobalMDC();
-        LOGGER.error("mdc初始化完成");
         SpringApplication.run(DemoApplication.class, args);
     }
 

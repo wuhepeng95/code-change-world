@@ -17,20 +17,12 @@ public class LogUtils {
     protected static final Logger logger = LoggerFactory.getLogger(LogUtils.class);
 
 
-//    public final static String ENV_TYPE = "ENV_TYPE";
-//    public final static String HOSTNAME = "HOSTNAME";
-//    public final static String IS_CONTAINER = "IS_CONTAINER";
     public final static String GUID = "guid";
 
     private static final Map<String, String> tags = new HashMap<>();
 
     static {
         try {
-            Properties prop = System.getProperties();
-
-//            tags.put(LogUtils.ENV_TYPE, prop.getProperty(LogUtils.ENV_TYPE, ""));
-//            tags.put(LogUtils.HOSTNAME, prop.getProperty(LogUtils.HOSTNAME, ""));
-//            tags.put(LogUtils.IS_CONTAINER, prop.getProperty(LogUtils.IS_CONTAINER, ""));
             Properties envProperties = new Properties();
             envProperties.load(LogUtils.class.getClassLoader().getResourceAsStream("env.properties"));
             Set<Map.Entry<Object, Object>> entries = envProperties.entrySet();
