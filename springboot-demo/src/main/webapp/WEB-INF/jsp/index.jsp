@@ -10,9 +10,7 @@
 <head>
     <title>Title</title>
     <%-- 引入vue --%>
-    <script type="text/javascript" src="../js/vue.js"></script>
-    <script src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.js"></script>
-    <%--    <script src="https://cdn.jsdelivr.net/npm/vue-router@3.0.2/dist/vue-router.js"></script>--%>
+    <script type="text/javascript" src="../js/vue2.6.10.js"></script>
 
     <!-- 引入elementUI -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
@@ -20,6 +18,7 @@
 </head>
 <body>
 Welcome!!
+<a href="../../static/vuedemo.html">vueDemo跑马灯</a>
 <div id="test">
     {{status | openStatusFilter}}
     {{status == -1 ? '关闭' : status == 0 ? '开通' : '暂时开通'}}

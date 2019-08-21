@@ -1,0 +1,43 @@
+<html>
+<head>
+    <title>vue-demo</title>
+    <!--解决乱码问题-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script src="../js/vue2.6.10.js"></script>
+</head>
+<body>
+<div class="vue_demo">
+    <input type="button" value="开始" @click="start">
+    <input type="button" value="停止" @click="stop">
+    <h3>{{msg}}</h3>
+
+</div>
+<script>
+    var vue = new Vue({
+        el: ".vue_demo",
+        data: {
+            msg: "我是跑马灯~~~~定时器!",
+            intervalId: ''
+        },
+        methods: {
+            start: function () {
+                // 方式多次开启定时器
+                if (!this.intervalId) {
+                    let _this = this;
+                    _this.intervalId = setInterval(function () {
+                        let start = _this.msg.substring(1, _this.msg.length);
+                        let end = _this.msg.substring(0, 1);
+                        _this.msg = start + end;
+                    }, 400)
+                }
+            },
+            stop: function () {
+                // 清除定时任务后充值intervalId
+                clearInterval(this.intervalId)
+                this.intervalId = ''
+            }
+        }
+    })
+</script>
+</body>
+</html>
