@@ -1,5 +1,6 @@
 package i.am.whp.service.impl;
 
+import i.am.whp.annotation.Cache;
 import i.am.whp.mapper.aws.MyTableMapper;
 import i.am.whp.model.MyTable;
 import i.am.whp.service.MyService;
@@ -9,16 +10,17 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 @Service
 public class MyServiceImpl implements MyService<HashMap<String, String>> {
 
+    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     @Autowired
     MyTableMapper myTableMapper;
 
     @Override
+    @Cache(keyName = "testKey", expireTime = 300)
     public HashMap<String, String> hi() {
         HashMap<String, String> model = new HashMap<>();
         model.put("code", "200");

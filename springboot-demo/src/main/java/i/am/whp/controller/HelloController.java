@@ -1,11 +1,10 @@
 package i.am.whp.controller;
 
 import com.alibaba.fastjson.JSON;
+import i.am.whp.annotation.Log;
 import i.am.whp.model.MyTable;
 import i.am.whp.service.MyService;
 import org.slf4j.MDC;
-import org.springframework.amqp.core.Message;
-import org.springframework.amqp.core.MessageBuilder;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +30,7 @@ public class HelloController {
 
     @RequestMapping("/test")
     @ResponseBody
+    @Log
     public String hello() {
 //        ModelAndView modelAndView = new ModelAndView();
         return JSON.toJSONString(myService.hi());
