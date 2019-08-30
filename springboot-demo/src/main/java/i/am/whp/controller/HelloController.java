@@ -46,8 +46,8 @@ public class HelloController {
     @RequestMapping("/sendMessage")
     @ResponseBody
     public String sendMessage() {
-        rabbitTemplate.setExchange("spring.boot.exchange");
-        rabbitTemplate.setRoutingKey("whp.test.route");
+        rabbitTemplate.setExchange("whp.test.exchange");
+        rabbitTemplate.setRoutingKey("whp.test.route.key");
         rabbitTemplate.setMessageConverter(messageConverter);
 
         // message

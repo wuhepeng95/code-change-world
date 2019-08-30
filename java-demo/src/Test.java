@@ -6,7 +6,7 @@ public class Test {
          * 或|(短路或||)：一真则真
          * ^异或：异为真
          */
-        //jvm 内部存储编码为Unicode
+        //jvm 内部存储编码为Unicode tomcat默认url编码iso8895-1
         System.out.println(System.getProperty("file.encoding"));
         System.err.println("这个线程怎么回事啊!");
 

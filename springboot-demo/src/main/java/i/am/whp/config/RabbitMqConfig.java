@@ -5,10 +5,11 @@ import com.alibaba.fastjson.JSONObject;
 import i.am.whp.model.MyTable;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
+import org.springframework.amqp.core.DirectExchange;
+import org.springframework.amqp.core.FanoutExchange;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.core.Queue;
-import org.springframework.amqp.core.TopicExchange;
 import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.support.converter.MessageConversionException;
@@ -25,25 +26,26 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitMqConfig {
 
     public static final String WHP_TEST_QUEUE = "whp.test.queue";
-    public static final String ROUTING_KEY_NAME = "whp.test.route";
+    public static final String ROUTING_KEY_NAME = "whp.test.route.key";
 
     // 创建Queue
     @Bean
     public Queue whpTestQueue() {
-        // 名字 是否持久话（重启不会消失） 是否专有 是否自动删除（长期不用会自动删除）
+        // 名字 是否持久话（重启不会消失） 是否专有(针对当前连接，换连接就删除) 是否自动删除（没有消费者后就删除）
         return new Queue(WHP_TEST_QUEUE, false, true, true);
     }
 
     // 定义一个topic交换器
     @Bean
-    TopicExchange exchange() {
-        return new TopicExchange("spring.boot.exchange", false, true);
+    FanoutExchange exchange() {
+        // FanoutExchange广播（全部topic） DirectExchange直接（绑定的topic） TopicExchange匹配到的topic
+        return new FanoutExchange("whp.test.exchange", false, true);
     }
 
     // 将消息队列queue和exchange绑定
     @Bean
-    Binding binding(Queue queue, TopicExchange exchange) {
-        return BindingBuilder.bind(queue).to(exchange).with(ROUTING_KEY_NAME);
+    Binding binding(Queue queue, FanoutExchange exchange) {
+        return BindingBuilder.bind(queue).to(exchange);
     }
 
     // 创建消息监听的容器
@@ -62,8 +64,7 @@ public class RabbitMqConfig {
         return new MessageConverter() {
             @Override
             public Message toMessage(Object o, MessageProperties messageProperties) throws MessageConversionException {
-                Message message = new Message(JSON.toJSONString(o).getBytes(),messageProperties);
-                return message;
+                return new Message(JSON.toJSONString(o).getBytes(),messageProperties);
             }
 
             @Override
