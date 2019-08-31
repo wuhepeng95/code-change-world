@@ -5,9 +5,11 @@ import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * @author wuhepeng
@@ -25,13 +27,15 @@ public class AspectOrientedProgramming {
 
     @Before("pointcut()")
     public void beforeController(JoinPoint joinPoint) {
-        logger.info("----------------before---------------------");
-        System.out.println("Logging before " + joinPoint.getSignature().getName());
+        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
+        RequestMapping annotation = signature.getMethod().getAnnotation(RequestMapping.class);
+        logger.info("------{}------controller-----start---------", annotation.value());
     }
 
     @After("pointcut()")
     public void afterController(JoinPoint joinPoint) {
-        System.out.println("Logging before " + joinPoint.getSignature().getName());
-        logger.info("----------------after---------------------");
+        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
+        RequestMapping annotation = signature.getMethod().getAnnotation(RequestMapping.class);
+        logger.info("------{}------controller-----end---------", annotation.value());
     }
 }

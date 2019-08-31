@@ -1,7 +1,6 @@
 package i.am.whp.controller;
 
 import com.alibaba.fastjson.JSON;
-import i.am.whp.annotation.Log;
 import i.am.whp.model.MyTable;
 import i.am.whp.service.MyService;
 import org.slf4j.MDC;
@@ -18,7 +17,6 @@ import java.util.Date;
 import java.util.List;
 
 @Controller
-@RequestMapping("/")
 public class HelloController {
 
     @Autowired
@@ -30,7 +28,6 @@ public class HelloController {
 
     @RequestMapping("/test")
     @ResponseBody
-    @Log
     public String hello() {
 //        ModelAndView modelAndView = new ModelAndView();
         return JSON.toJSONString(myService.hi());

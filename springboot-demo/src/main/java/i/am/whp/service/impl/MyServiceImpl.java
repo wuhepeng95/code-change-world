@@ -1,6 +1,7 @@
 package i.am.whp.service.impl;
 
 import i.am.whp.annotation.Cache;
+import i.am.whp.annotation.LogCost;
 import i.am.whp.mapper.aws.MyTableMapper;
 import i.am.whp.model.MyTable;
 import i.am.whp.service.MyService;
@@ -20,7 +21,6 @@ public class MyServiceImpl implements MyService<HashMap<String, String>> {
     MyTableMapper myTableMapper;
 
     @Override
-    @Cache(keyName = "testKey", expireTime = 300)
     public HashMap<String, String> hi() {
         HashMap<String, String> model = new HashMap<>();
         model.put("code", "200");
@@ -29,6 +29,8 @@ public class MyServiceImpl implements MyService<HashMap<String, String>> {
     }
 
     @Override
+    @LogCost
+    @Cache(keyName = "testKey", expireTime = 20)
     public List<MyTable> getData(String keyword) {
         new Thread(() -> System.out.println("开启线程1：" + MDC.get("guid"))).start();
         System.out.println("service:" + MDC.get("guid"));

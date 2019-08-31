@@ -18,5 +18,5 @@ public @interface Cache {
     String keyName() default "";
 
     // 过期时间 默认1分钟(60s)
-    int expireTime() default 60;
+    long expireTime() default 60;
 }

@@ -47,7 +47,7 @@ public class DemoApplicationTests {
     }
 
     @Test
-    public void jedis() {
+    public void redis() {
         System.out.println(redisTemplate.hasKey("name"));
     }
 }

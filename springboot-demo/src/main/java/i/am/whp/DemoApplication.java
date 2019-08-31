@@ -42,6 +42,7 @@ public class DemoApplication extends SpringBootServletInitializer implements Web
         configurer.enable();
     }
 
+    // 视图解析器配置
     @Bean
     public InternalResourceViewResolver setupViewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();

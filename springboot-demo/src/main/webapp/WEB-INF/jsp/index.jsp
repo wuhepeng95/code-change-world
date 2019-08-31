@@ -15,6 +15,9 @@
     <!-- 引入elementUI -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+    <%-- 引入jquery --%>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
 </head>
 <body>
 Welcome!!
@@ -40,7 +43,7 @@ Welcome!!
 </div>
 </body>
 <script>
-    var test = new Vue({
+    var vue = new Vue({
         el: "#test",
         data: {
             status: 1,
@@ -56,13 +59,27 @@ Welcome!!
         },
         methods: {
             getData: function () {
-                this.$http({
-                    method: 'GET',
-                    url: 'http://localhost:18080/getData?keyword=' + this.keyword
-                }).then(function (response) {
-                    this.testList = response.data;//response.data 固定写法
-                }, function (error) {
-                    alert("服务器异常\n" + error.data);
+                // this.$http({
+                //     method: 'GET',
+                //     url: 'http://localhost:18080/getData?keyword=' + this.keyword
+                // }).then(function (response) {
+                //     this.testList = response;
+                // }, function (error) {
+                //     alert("服务器异常\n" + error.data);
+                // })
+                $.ajax({
+                    url: 'http://localhost:18080/getData?keyword=' + this.keyword,
+                    type: 'get',
+                    // dataType: 'jsonp',
+                    // data: {
+                    //     sign: md5(this.appKey + text + this.salt + this.key)
+                    // },
+                    success: function (response) {
+                        vue.testList = response;//response.data 固定写法
+                    },
+                    error: function (error) {
+                        alert("服务器异常\n" + error.data);
+                    }
                 })
             },
             delayTest: function () {

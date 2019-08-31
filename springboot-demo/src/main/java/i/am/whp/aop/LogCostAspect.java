@@ -1,6 +1,6 @@
 package i.am.whp.aop;
 
-import i.am.whp.annotation.Log;
+import i.am.whp.annotation.LogCost;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -15,22 +15,22 @@ import org.springframework.stereotype.Component;
  */
 @Aspect
 @Component
-public class LogAspect {
+public class LogCostAspect {
 
-    private Logger logger = LoggerFactory.getLogger(LogAspect.class);
+    private Logger logger = LoggerFactory.getLogger(LogCostAspect.class);
 
-    @Pointcut("@annotation(i.am.whp.annotation.Log)")
+    @Pointcut("@annotation(i.am.whp.annotation.LogCost)")
     public void logPointcut() {
 
     }
 
     @Around("logPointcut()&&@annotation(log)")
-    public Object around(ProceedingJoinPoint joinPoint, Log log) throws Throwable {
+    public Object around(ProceedingJoinPoint joinPoint, LogCost log) throws Throwable {
         long startTime = System.currentTimeMillis();
         Object result = joinPoint.proceed();
         long endTime = System.currentTimeMillis();
         long cost = endTime - startTime;
-        logger.info("methodName:{},executeTime:{},cost:{}", joinPoint.getSignature(), endTime, cost);
+        logger.info("调用方法methodName:{},耗时cost:{}", joinPoint.getSignature(), cost);
         return result;
     }
 }
