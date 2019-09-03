@@ -22,17 +22,17 @@
 <body>
 Welcome!!
 <a href="../../static/vuedemo.html">vueDemo跑马灯</a>
+<a href="/dialog">弹窗测试</a>
 <div id="test">
-    {{status | openStatusFilter}}
+    <el-button type="primary" @click="delayTest()">延时弹窗</el-button>
+    <br/>
     {{status == -1 ? '关闭' : status == 0 ? '开通' : '暂时开通'}}
+    <br/>
     <el-input :data="keyword" placeholder="输入关键字查询" style="width: 300px"></el-input>
     <%-- :data = v-model 参数绑定--%>
     <el-button type="primary" @click="getData()">调用接口</el-button>
     <%-- @click = v-on:click 事件绑定--%>
-    <el-button type="primary" @click="delayTest()">延时弹窗</el-button>
-
     <br/>
-    <a href="/dialog">弹窗测试</a>
     <%--饿了么UI 表格 --%>
     <el-table :data="testList" style="width: 100%">
         <el-table-column prop="id" label="序号" width="180"></el-table-column>
@@ -75,10 +75,18 @@ Welcome!!
                     //     sign: md5(this.appKey + text + this.salt + this.key)
                     // },
                     success: function (response) {
-                        vue.testList = response;//response.data 固定写法
-                    },
-                    error: function (error) {
-                        alert("服务器异常\n" + error.data);
+                        if (response.result) {
+                            vue.$message({
+                                message: '调用成功',
+                                type: 'success'
+                            });
+                            vue.testList = response.data;//response.data 固定写法
+                        } else {
+                            vue.$message({
+                                message: '调用失败' + response.msg,
+                                type: 'error'
+                            });
+                        }
                     }
                 })
             },

@@ -8,8 +8,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-
-
     <title>Title</title>
     <%-- 引入vue --%>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -46,8 +44,6 @@
             <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
         </div>
     </el-dialog>
-
-
 </div>
 </body>
 <script>
@@ -88,17 +84,11 @@
                     confirmButtonText: '是',
                     cancelButtonText: '否',
                     type: 'warning'
-                }).then(() = > {
-                    alert("是"
-            )
-                ;
-            }).
-                catch(() = > {
-                    alert("否"
-            )
-                ;
-            })
-                ;
+                }).then(() => {
+                    alert("是")
+                }).catch(() => {
+                    alert("否")
+                });
             }
         }
     })

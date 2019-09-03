@@ -17,6 +17,8 @@ public class RedisConfig {
     public RedisTemplate initRedisTemplate(RedisConnectionFactory redisConnectionFactory) throws Exception {
         RedisTemplate redisTemplate = new RedisTemplate();
         redisTemplate.setConnectionFactory(redisConnectionFactory);
+        // 配置序列化 转化器 可以设为jackson或者自定义为FastJson
+        // 目的一个存储效能（空间、时间） 一个数据安全
         redisTemplate.setKeySerializer(new StringRedisSerializer());
         redisTemplate.setValueSerializer(new JdkSerializationRedisSerializer());
         redisTemplate.afterPropertiesSet();

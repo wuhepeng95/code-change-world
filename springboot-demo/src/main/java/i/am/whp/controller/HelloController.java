@@ -3,7 +3,6 @@ package i.am.whp.controller;
 import com.alibaba.fastjson.JSON;
 import i.am.whp.model.MyTable;
 import i.am.whp.service.MyService;
-import org.slf4j.MDC;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class HelloController {
@@ -35,9 +36,12 @@ public class HelloController {
 
     @RequestMapping("/getData")
     @ResponseBody
-    public List getData(@RequestParam("keyword") String keyword) {
-        System.out.println("controller:" + MDC.get("guid"));
-        return myService.getData(keyword);
+    public Map<String, Object> getData(@RequestParam("keyword") String keyword) {
+        Map<String, Object> response = new HashMap<>();
+        List data = myService.getData(keyword);
+        response.put("result", true);
+        response.put("data", data);
+        return response;
     }
 
     @RequestMapping("/sendMessage")
@@ -56,6 +60,4 @@ public class HelloController {
         rabbitTemplate.convertAndSend(message);
         return "send success";
     }
-
-
 }

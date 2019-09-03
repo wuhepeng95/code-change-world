@@ -9,13 +9,19 @@ public class Test {
         //jvm 内部存储编码为Unicode tomcat默认url编码iso8895-1
         System.out.println(System.getProperty("file.encoding"));
         System.err.println("这个线程怎么回事啊!");
+        System.out.println(System.getProperty("file.encoding"));
 
         //String的intern()方法会查找在常量池中是否存在一份equal相等的字符串,如果有则返回该字符串的引用,如果没有则添加自己的字符串进入常量池。
         int sum = 1;
-        for (int i = 1; i < 100; i++) {
-            sum *= i;
+        for (int i = 1; i < 35; i++) {
+            // 溢出之后变成了 0
+            if (i == 29 || i == 30 || i == 31 || i == 32 || i == 33 || i == 34) {
+                sum = sum * 4;
+                System.out.println("i:" + i + ",sum:" + sum);
+                System.out.println(Integer.toBinaryString(sum));
+            } else {
+                sum *= i;
+            }
         }
-        // 溢出之后变成了 0
-        System.out.println(sum);
     }
 }
