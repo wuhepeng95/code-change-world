@@ -1,4 +1,4 @@
-package i.am.whp.exception;
+package i.am.whp.handler;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -12,7 +12,7 @@ import java.util.Map;
  * @date 2019/9/2
  */
 @ControllerAdvice
-public class ControllerException {
+public class ControllerExceptionHandler {
 
     @ExceptionHandler({Exception.class})
     @ResponseBody
