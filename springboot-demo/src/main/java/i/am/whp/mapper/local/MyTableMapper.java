@@ -1,4 +1,4 @@
-package i.am.whp.mapper.aws;
+package i.am.whp.mapper.local;
 
 import i.am.whp.model.MyTable;
 import org.apache.ibatis.annotations.Param;

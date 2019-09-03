@@ -6,6 +6,19 @@ import i.am.whp.model.enums.Status;
 import java.io.Serializable;
 import java.util.Date;
 
+
+/**
+ * CREATE TABLE test.my_table (
+ * 	id INT NOT NULL AUTO_INCREMENT,
+ * 	name varchar(100) NULL,
+ * 	status TINYINT NULL,
+ * 	create_time DATETIME NULL,
+ * 	primary key(id)
+ * )
+ * ENGINE=InnoDB
+ * DEFAULT CHARSET=utf8mb4
+ * COLLATE=utf8mb4_0900_ai_ci;
+ */
 public class MyTable implements Serializable {
 
     private Integer id;

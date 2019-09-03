@@ -12,25 +12,25 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 
-import static i.am.whp.config.DataSourceAwsConfig.SQL_SESSION_FACTORY;
+import static i.am.whp.config.DataSourceLocalConfig.SQL_SESSION_FACTORY;
 
 @Configuration
 @EnableTransactionManagement
-@MapperScan(basePackages = DataSourceAwsConfig.PACKAGE_PATH, sqlSessionFactoryRef = SQL_SESSION_FACTORY)
-public class DataSourceAwsConfig {
+@MapperScan(basePackages = DataSourceLocalConfig.PACKAGE_PATH, sqlSessionFactoryRef = SQL_SESSION_FACTORY)
+public class DataSourceLocalConfig {
 
-    public static final String PACKAGE_PATH = "i.am.whp.mapper.aws";
-    public static final String SQL_SESSION_FACTORY = "awsSqlSessionFactory";
-    public static final String DATA_SOURCE_NAME = "aws";
+    public static final String PACKAGE_PATH = "i.am.whp.mapper.local";
+    public static final String SQL_SESSION_FACTORY = "localSqlSessionFactory";
+    public static final String DATA_SOURCE_NAME = "local";
     // public static final String TX_MANAGER = ConfigInFile.TRANSACTION_MANAGER_TA;
 
     @Value("${mysql.driver}")
     private String driver;
-    @Value("${aws.mysql.url}")
+    @Value("${local.mysql.url}")
     private String url;
-    @Value("${aws.mysql.username}")
+    @Value("${local.mysql.username}")
     private String username;
-    @Value("${aws.mysql.password}")
+    @Value("${local.mysql.password}")
     private String password;
 
     @Bean(name = DATA_SOURCE_NAME)

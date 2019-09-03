@@ -1,6 +1,6 @@
 import com.alibaba.fastjson.JSON;
 import i.am.whp.DemoApplication;
-import i.am.whp.mapper.aws.MyTableMapper;
+import i.am.whp.mapper.local.MyTableMapper;
 import i.am.whp.mapper.qingqing.PhoneNumberDeviceRelationMapper;
 import i.am.whp.service.MyService;
 import i.am.whp.test.MyBean;

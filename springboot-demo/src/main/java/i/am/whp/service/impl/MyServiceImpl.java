@@ -2,7 +2,7 @@ package i.am.whp.service.impl;
 
 import i.am.whp.annotation.Cache;
 import i.am.whp.annotation.LogCost;
-import i.am.whp.mapper.aws.MyTableMapper;
+import i.am.whp.mapper.local.MyTableMapper;
 import i.am.whp.model.MyTable;
 import i.am.whp.service.MyService;
 import org.slf4j.MDC;

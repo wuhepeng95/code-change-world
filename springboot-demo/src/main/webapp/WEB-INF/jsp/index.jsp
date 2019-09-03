@@ -28,7 +28,13 @@ Welcome!!
     <br/>
     {{status == -1 ? '关闭' : status == 0 ? '开通' : '暂时开通'}}
     <br/>
-    <el-input :data="keyword" placeholder="输入关键字查询" style="width: 300px"></el-input>
+    <el-input
+            v-model="keyword"
+            placeholder="输入关键字查询"
+            style="width: 300px"
+            clearable
+            >
+    </el-input>
     <%-- :data = v-model 参数绑定--%>
     <el-button type="primary" @click="getData()">调用接口</el-button>
     <%-- @click = v-on:click 事件绑定--%>
