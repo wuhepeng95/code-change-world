@@ -2,6 +2,7 @@ package i.am.whp.service.impl;
 
 import i.am.whp.annotation.Cache;
 import i.am.whp.annotation.LogCost;
+import i.am.whp.domain.GetDataParam;
 import i.am.whp.mapper.local.MyTableMapper;
 import i.am.whp.model.MyTable;
 import i.am.whp.service.MyService;
@@ -31,7 +32,7 @@ public class MyServiceImpl implements MyService<HashMap<String, String>> {
     @Override
     @LogCost
     @Cache(keyName = "testKey", expireTime = 20)
-    public List<MyTable> getData(String keyword) {
+    public List<MyTable> getData(GetDataParam param) {
         new Thread(() -> System.out.println("开启线程1：" + MDC.get("guid"))).start();
         System.out.println("service:" + MDC.get("guid"));
 //        手动继承
@@ -47,6 +48,11 @@ public class MyServiceImpl implements MyService<HashMap<String, String>> {
             System.out.println("T2" + System.identityHashCode(MDC.getCopyOfContextMap()));
             System.out.println("开启线程2：" + MDC.get("guid"));
         }).start();
-        return myTableMapper.getList(keyword);
+        return myTableMapper.getList(param);
+    }
+
+    @Override
+    public int getCount(GetDataParam param) {
+        return myTableMapper.getCount(param);
     }
 }

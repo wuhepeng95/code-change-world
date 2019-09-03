@@ -13,9 +13,19 @@
     <select id="getById" parameterType="java.lang.Integer" resultMap="baseMap">
 		select a.* from my_table a where id = #{id}
 	</select>
-    <select id="getList" resultMap="baseMap">
+    <select id="getList" parameterType="i.am.whp.domain.GetDataParam" resultMap="baseMap">
         select
-            *
+        *
+        from my_table
+        where 1=1
+        <if test="keyword != null and keyword != ''">
+            and name like concat('%',#{keyword},'%')
+        </if>
+        limit #{startNum},#{pageSize}
+    </select>
+    <select id="getCount" parameterType="i.am.whp.domain.GetDataParam" resultType="java.lang.Integer">
+        select
+        count(*)
         from my_table
         where 1=1
         <if test="keyword != null and keyword != ''">

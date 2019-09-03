@@ -33,7 +33,7 @@ Welcome!!
             placeholder="输入关键字查询"
             style="width: 300px"
             clearable
-            >
+    >
     </el-input>
     <%-- :data = v-model 参数绑定--%>
     <el-button type="primary" @click="getData()">调用接口</el-button>
@@ -46,6 +46,15 @@ Welcome!!
         <el-table-column prop="status" label="状态"></el-table-column>
         <el-table-column prop="createTime" label="创建日期"></el-table-column>
     </el-table>
+    <el-pagination
+            @size-change="handleSizeChange"
+            @current-change="getData"
+            :current-page="currentPage"
+            :page-sizes="[10, 20, 30, 40]"
+            :page-size="100"
+            layout="total, sizes, prev, pager, next, jumper"
+            :total="totalCount">
+    </el-pagination>
 </div>
 </body>
 <script>
@@ -54,7 +63,11 @@ Welcome!!
         data: {
             status: 1,
             keyword: '',
-            testList: []
+            testList: [],
+            // 分页
+            currentPage: 1,
+            pageSize: 10,
+            totalCount:0
         },
         filters: {
             openStatusFilter: function (value) {
@@ -63,8 +76,14 @@ Welcome!!
                 if (value === 1) return '暂时开通';
             }
         },
+        mounted(){
+            this.$message({
+                message: '好好看，好好学',
+                type: 'info'
+            });
+        },
         methods: {
-            getData: function () {
+            getData: function (currentPage) {
                 // this.$http({
                 //     method: 'GET',
                 //     url: 'http://localhost:18080/getData?keyword=' + this.keyword
@@ -74,12 +93,14 @@ Welcome!!
                 //     alert("服务器异常\n" + error.data);
                 // })
                 $.ajax({
-                    url: 'http://localhost:18080/getData?keyword=' + this.keyword,
-                    type: 'get',
-                    // dataType: 'jsonp',
-                    // data: {
-                    //     sign: md5(this.appKey + text + this.salt + this.key)
-                    // },
+                    url: 'http://localhost:18080/getData',
+                    type: 'post',
+                    dataType: 'json',
+                    data: {
+                        keyword: this.keyword,
+                        currentPage: currentPage,
+                        pageSize: this.pageSize
+                    },
                     success: function (response) {
                         if (response.result) {
                             vue.$message({
@@ -87,6 +108,7 @@ Welcome!!
                                 type: 'success'
                             });
                             vue.testList = response.data;//response.data 固定写法
+                            vue.totalCount = response.count;
                         } else {
                             vue.$message({
                                 message: '调用失败' + response.msg,
@@ -95,6 +117,9 @@ Welcome!!
                         }
                     }
                 })
+            },
+            handleSizeChange(val) {
+                this.pageSize = val;
             },
             delayTest: function () {
                 //debugger
