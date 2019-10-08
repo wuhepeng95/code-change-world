@@ -21,6 +21,7 @@ public class AspectOrientedProgramming {
 
     private Logger logger = LoggerFactory.getLogger(AspectOrientedProgramming.class);
 
+    // 不能切private 应该是规范不允许
     @Pointcut("execution(public * i.am.whp.controller.*.*(..))")
     private void pointcut() {
     }

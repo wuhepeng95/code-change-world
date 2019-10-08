@@ -35,10 +35,11 @@ public class CacheAspect {
     public Object around(ProceedingJoinPoint joinPoint, Cache cache) throws Throwable {
         String keyName = cache.keyName();
         long expireTime = cache.expireTime();
-        Object[] args = joinPoint.getArgs();
-        for (Object param : args) {
-            keyName += ("_" + param.toString());
-        }
+        // 不关心入参 只有key决定
+//        Object[] args = joinPoint.getArgs();
+//        for (Object param : args) {
+//            keyName += ("_" + param.toString());
+//        }
         // 查看是否有缓存 有 直接去缓存返回
         if (redisTemplate.hasKey(keyName)) {
             Object result = redisTemplate.opsForValue().get(keyName);

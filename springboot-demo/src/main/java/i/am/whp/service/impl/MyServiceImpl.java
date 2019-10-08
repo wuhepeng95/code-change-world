@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+//expected single matching bean but found 2: myServiceImpl,myServiceImpl222
 @Service
 public class MyServiceImpl implements MyService<HashMap<String, String>> {
 
@@ -31,7 +32,7 @@ public class MyServiceImpl implements MyService<HashMap<String, String>> {
 
     @Override
     @LogCost
-    @Cache(keyName = "testKey", expireTime = 20)
+    @Cache(keyName = "whp-test:get_data", expireTime = 20)
     public List<MyTable> getData(GetDataParam param) {
         new Thread(() -> System.out.println("开启线程1：" + MDC.get("guid"))).start();
         System.out.println("service:" + MDC.get("guid"));

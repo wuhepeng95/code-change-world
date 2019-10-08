@@ -2,6 +2,7 @@ package i.am.whp.service;
 
 import i.am.whp.domain.GetDataParam;
 import i.am.whp.model.MyTable;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
