@@ -1,4 +1,4 @@
-package md5;
+package algorithm.md5;
 
 public class MD5 {
     /*

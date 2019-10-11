@@ -1,3 +1,5 @@
+package app;
+
 import com.swetake.util.Qrcode;
 
 import javax.imageio.ImageIO;

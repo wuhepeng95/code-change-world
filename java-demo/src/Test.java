@@ -1,3 +1,8 @@
+import org.python.antlr.ast.Str;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Test {
 
     public static void main(String[] args) {
@@ -23,7 +28,13 @@ public class Test {
                 sum *= i;
             }
         }
-    }
 
+        // java正在取第一个匹配到的参数
+        String reg = "8r";
+        Pattern pattern = Pattern.compile(reg);
+        Matcher matcher = pattern.matcher("sdkfh2348y92h32 8r h2r82 3h- j23rji 8r");
+        System.out.println(matcher.find());
+        System.out.println(matcher.group());
+    }
 
 }

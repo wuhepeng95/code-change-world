@@ -1,4 +1,4 @@
-package md5;
+package algorithm.md5;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
