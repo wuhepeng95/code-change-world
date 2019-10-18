@@ -1,7 +1,11 @@
 import org.python.antlr.ast.Str;
+import reflecttest.changefieldvalue.TestBean;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class Test {
 
@@ -35,6 +39,17 @@ public class Test {
         Matcher matcher = pattern.matcher("sdkfh2348y92h32 8r h2r82 3h- j23rji 8r");
         System.out.println(matcher.find());
         System.out.println(matcher.group());
+
+        List<TestBean> ss = new ArrayList<>();
+        List<String> collect = ss.stream().map(TestBean::getUrl).collect(Collectors.toList());
+        System.out.println(collect);
+
+        String s1s = "ssss 、aaaa";
+        String[] array = s1s.split("、");
+        for (int i = 0; i < array.length; i++) {
+            array[i]=array[i].trim();
+        }
+        System.out.println(array);
     }
 
 }

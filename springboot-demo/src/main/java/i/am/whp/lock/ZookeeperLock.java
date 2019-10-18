@@ -17,7 +17,7 @@ import java.util.concurrent.CountDownLatch;
  * @author wuhepeng
  * @date 2019/9/20
  */
-public class ZookeeperDistributedLock {
+public class ZookeeperLock {
 
     //zk客户端
     private ZooKeeper zk;
@@ -33,13 +33,12 @@ public class ZookeeperDistributedLock {
     private final static int sessionTimeout = 3000;
     private final static byte[] data = new byte[0];
 
-    public ZookeeperDistributedLock(String config, String lockName) {
+    public ZookeeperLock(String config, String lockName) {
         this.lockName = lockName;
 
         try {
             // 连接方式支持集群
             zk = new ZooKeeper(config, sessionTimeout, new Watcher() {
-
                 @Override
                 public void process(WatchedEvent event) {
                     // 建立连接
@@ -47,7 +46,6 @@ public class ZookeeperDistributedLock {
                         connectedSignal.countDown();
                     }
                 }
-
             });
 
             connectedSignal.await();

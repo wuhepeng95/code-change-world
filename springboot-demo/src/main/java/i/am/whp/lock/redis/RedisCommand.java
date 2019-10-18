@@ -1,4 +1,4 @@
-package i.am.whp.lock.api;
+package i.am.whp.lock.redis;
 
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.script.DefaultRedisScript;

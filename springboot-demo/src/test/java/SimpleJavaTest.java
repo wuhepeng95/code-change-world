@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
-public class SimpleTests {
+public class SimpleJavaTest {
     @Test
     public void arrayToJson() {
         List<Bean> lists = new ArrayList<>();

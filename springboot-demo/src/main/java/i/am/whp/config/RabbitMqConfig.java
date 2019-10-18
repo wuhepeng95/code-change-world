@@ -17,12 +17,14 @@ import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.boot.autoconfigure.amqp.SimpleRabbitListenerContainerFactoryConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 /**
  * @author wuhepeng
  * @date 2019/8/26
  */
 @Configuration
+@Profile("with_rabbitmq")
 public class RabbitMqConfig {
 
     public static final String WHP_TEST_QUEUE = "whp.test.queue";

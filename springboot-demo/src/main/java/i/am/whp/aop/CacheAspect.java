@@ -7,6 +7,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
@@ -19,6 +20,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Aspect
 @Component
+@Profile("with_redis")
 public class CacheAspect {
 
     private Logger logger = LoggerFactory.getLogger(CacheAspect.class);
