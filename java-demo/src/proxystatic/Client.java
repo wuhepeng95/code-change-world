@@ -1,6 +1,6 @@
 package proxystatic;
 
-import proxydynamic.MyProxy;
+import proxydynamic.MyInvocationHandler;
 
 /**
  * Created by wuhp on 2017/11/2.
@@ -11,7 +11,7 @@ public class Client {
         HireHouse hh = new HireHouseImpl();
         hh.hire();
         //使用代理
-        HireHouse php = (HireHouse) new MyProxy(new HireHouseImpl());
+        HireHouse php = (HireHouse) new MyInvocationHandler(new HireHouseImpl());
         php.hire();
         //创建接口的实现类
     }

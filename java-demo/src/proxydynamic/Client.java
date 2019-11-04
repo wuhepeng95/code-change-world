@@ -1,5 +1,6 @@
 package proxydynamic;
 
+import java.io.IOException;
 import java.lang.reflect.Proxy;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,11 +16,11 @@ public class Client {
         //创建代理对象
         HireHouse hh = (HireHouse) Proxy.newProxyInstance(
                 //获取被代理对象的类加载器
-                hhi.getClass().getClassLoader(),
+                Client.class.getClassLoader(),
                 //获取被代理对象的全部接口
                 hhi.getClass().getInterfaces(),
                 //自定义代理类的对象
-                new MyProxy(hhi));
+                new MyInvocationHandler(hhi));
         hh.hire();//使用代理
 
         //List被代理 所有方法都可用
@@ -31,9 +32,14 @@ public class Client {
                 //获取被代理对象的全部接口
                 lsi.getClass().getInterfaces(),
                 //自定义代理类的对象
-                new MyProxy(lsi));
+                new MyInvocationHandler(lsi));
         //这样的话，就会走代理了 invoke方法，反射调用方法
         ls.add("HelloProxy");
         ls.get(0);
+        try {
+            System.in.read();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

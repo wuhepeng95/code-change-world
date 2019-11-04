@@ -1,5 +1,6 @@
 package i.am.whp.service;
 
+import i.am.whp.annotation.Cache;
 import org.springframework.stereotype.Component;
 
 import javax.websocket.OnClose;
@@ -54,7 +55,7 @@ public class ImportDictValueSocket {
      *
      * @param message 客户端发送过来的消息
      */
-    @OnMessage
+    @Cache
     public void onMessage(String message, Session session) throws IOException, InterruptedException {
         System.out.println("来自客户端的消息:" + message);
 

@@ -6,12 +6,13 @@ import java.lang.reflect.Method;
 /**
  * Created by wuhp on 2017/11/2.
  */
-//动态代理必须继承InvocationHandler接口，实现invoke方法（反射）
-public class MyProxy implements InvocationHandler {
+//jdk动态代理必须继承java.lang.reflect.InvocationHandler接口，实现invoke方法（反射）
+//cglib动态代理必须继承org.springframework.cglib.proxy.MethodInterceptor接口（spring-core包），实现intercept方法
+public class MyInvocationHandler implements InvocationHandler {
 
     private Object obj;
 
-    public MyProxy(Object obj) {
+    public MyInvocationHandler(Object obj) {
         this.obj = obj;
     }
 

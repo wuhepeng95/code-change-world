@@ -59,7 +59,6 @@ public class ZookeeperTest extends SpringBootTestBase {
                     client.lock(new DemoMutex<BuyTickReq>("票总数") {
                         @Override
                         public BuyTickReq execute() {
-
                             UUID uuid = UUID.randomUUID();
                             // 获取票的总数
                             int total = (int) redisTemplate.opsForValue().get("000000_ticks_total");

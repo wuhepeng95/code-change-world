@@ -15,7 +15,9 @@ class SingleTon {
 
     public static int count1;
     public static int count2 = 1;
+    {
 
+    }
     private SingleTon() {
         count1++;
         count2++;

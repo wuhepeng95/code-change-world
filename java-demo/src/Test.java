@@ -1,11 +1,5 @@
-import org.python.antlr.ast.Str;
-import reflecttest.changefieldvalue.TestBean;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public class Test {
 
@@ -40,16 +34,8 @@ public class Test {
         System.out.println(matcher.find());
         System.out.println(matcher.group());
 
-        List<TestBean> ss = new ArrayList<>();
-        List<String> collect = ss.stream().map(TestBean::getUrl).collect(Collectors.toList());
-        System.out.println(collect);
+        System.out.println(1 * 1.0 / 3L);
 
-        String s1s = "ssss 、aaaa";
-        String[] array = s1s.split("、");
-        for (int i = 0; i < array.length; i++) {
-            array[i]=array[i].trim();
-        }
-        System.out.println(array);
     }
 
 }
