@@ -1,3 +1,4 @@
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -35,6 +36,8 @@ public class Test {
         System.out.println(matcher.group());
 
         System.out.println(1 * 1.0 / 3L);
+
+        System.out.println(UUID.randomUUID());
 
     }
 
