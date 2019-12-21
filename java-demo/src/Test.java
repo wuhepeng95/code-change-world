@@ -1,3 +1,7 @@
+import com.alibaba.fastjson.JSON;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -38,6 +42,14 @@ public class Test {
         System.out.println(1 * 1.0 / 3L);
 
         System.out.println(UUID.randomUUID());
+
+        Map<Long,String> regionIdNameMap = new LinkedHashMap<>();
+        regionIdNameMap.put(1L,"123");
+        regionIdNameMap.put(2L,"123");
+        System.out.println(JSON.toJSONString(regionIdNameMap));
+
+        regionIdNameMap.clear();
+        System.out.println(regionIdNameMap);
 
     }
 

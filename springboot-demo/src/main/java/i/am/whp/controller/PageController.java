@@ -20,4 +20,9 @@ public class PageController {
     public String expend() {
         return "expend";
     }
+
+    @RequestMapping("/cascader")
+    public String cascader() {
+        return "cascader";
+    }
 }

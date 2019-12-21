@@ -23,6 +23,7 @@
 Welcome!!
 <a href="../../static/vuedemo.html">vueDemo跑马灯</a>
 <a href="/dialog">弹窗测试</a>
+<a href="/cascader">级联选择器</a>
 <div id="test">
     <el-button type="primary" @click="delayTest()">延时弹窗</el-button>
     <br/>
@@ -84,14 +85,6 @@ Welcome!!
         },
         methods: {
             getData: function (currentPage) {
-                // this.$http({
-                //     method: 'GET',
-                //     url: 'http://localhost:18080/getData?keyword=' + this.keyword
-                // }).then(function (response) {
-                //     this.testList = response;
-                // }, function (error) {
-                //     alert("服务器异常\n" + error.data);
-                // })
                 $.ajax({
                     url: 'http://localhost:18080/getData',
                     type: 'post',
@@ -107,6 +100,7 @@ Welcome!!
                                 message: '调用成功',
                                 type: 'success'
                             });
+                            console.log("loading-----");
                             vue.testList = response.data;//response.data 固定写法
                             vue.totalCount = response.count;
                         } else {
