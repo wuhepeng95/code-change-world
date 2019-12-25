@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.IntStream;
 
 public class Test {
 
@@ -43,14 +44,15 @@ public class Test {
 
         System.out.println(UUID.randomUUID());
 
-        Map<Long,String> regionIdNameMap = new LinkedHashMap<>();
-        regionIdNameMap.put(1L,"123");
-        regionIdNameMap.put(2L,"123");
+        Map<Long, String> regionIdNameMap = new LinkedHashMap<>();
+        regionIdNameMap.put(1L, "123");
+        regionIdNameMap.put(2L, "123");
         System.out.println(JSON.toJSONString(regionIdNameMap));
 
         regionIdNameMap.clear();
         System.out.println(regionIdNameMap);
 
+        IntStream.range(1, 10).forEach(System.out::println);
     }
 
 }

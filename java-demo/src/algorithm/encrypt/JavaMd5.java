@@ -1,4 +1,4 @@
-package algorithm.md5;
+package algorithm.encrypt;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
@@ -9,7 +9,7 @@ import java.security.NoSuchAlgorithmException;
  */
 public class JavaMd5 {
     public static void main(String[] args) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-        String encodeStr = "你好吗";
+        String encodeStr = "你好啊";
         MessageDigest md5 = MessageDigest.getInstance("MD5");
         md5.update(encodeStr.getBytes("UTF-8"));
         System.out.println(byte2Hex(md5.digest()));

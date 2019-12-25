@@ -1,11 +1,10 @@
-package i.am.whp.config;
+package i.am.whp.config.mq;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import i.am.whp.model.MyTable;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.FanoutExchange;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageProperties;
@@ -66,15 +65,14 @@ public class RabbitMqConfig {
         return new MessageConverter() {
             @Override
             public Message toMessage(Object o, MessageProperties messageProperties) throws MessageConversionException {
-                return new Message(JSON.toJSONString(o).getBytes(),messageProperties);
+                return new Message(JSON.toJSONString(o).getBytes(), messageProperties);
             }
 
             @Override
             public Object fromMessage(Message message) throws MessageConversionException {
-                return JSONObject.parseObject(message.getBody(),MyTable.class);
+                return JSONObject.parseObject(message.getBody(), MyTable.class);
             }
         };
     }
-
 
 }

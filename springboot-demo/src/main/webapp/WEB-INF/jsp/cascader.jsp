@@ -24,11 +24,21 @@
         <div class="block">
             <span class="demonstration">折叠展示Tag</span>
             <el-cascader
-                    :options="options"
+                    :options="options2"
                     :props="props"
                     collapse-tags
                     clearable>
             </el-cascader>
+
+            <el-select v-model="value" placeholder="请选择">
+                <el-option
+                        v-for="item in options"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value">
+                </el-option>
+            </el-select>
+
         </div>
     </div>
 </body>
@@ -38,6 +48,24 @@
             return {
                 props: {multiple: true},
                 options: [{
+                    value: '选项1',
+                    label: '黄金糕'
+                }, {
+                    value: '选项2',
+                    label: '双皮奶'
+                }, {
+                    value: '选项3',
+                    label: '蚵仔煎'
+                }, {
+                    value: '选项4',
+                    label: '龙须面'
+                }, {
+                    value: '选项5',
+                    label: '北京烤鸭'
+                }],
+                value: '选项4',// 必须为字符串类型.....
+
+                options2: [{
                     value: 1,
                     label: '东南',
                     children: [{

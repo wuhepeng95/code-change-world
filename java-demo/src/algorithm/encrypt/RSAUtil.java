@@ -1,4 +1,4 @@
-package algorithm;
+package algorithm.encrypt;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -20,6 +20,7 @@ import java.util.Base64;
 
 /**
  * RSA 是非对称的密码算法，密钥分公钥和私钥，公钥用来加密，私钥用于解密
+ * Tip：私钥用来签证，公钥用来验签
  */
 
 public class RSAUtil {
