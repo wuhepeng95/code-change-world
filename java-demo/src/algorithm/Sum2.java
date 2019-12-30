@@ -1,6 +1,8 @@
 package algorithm;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 2sum问题 target = 5
@@ -46,29 +48,45 @@ public class Sum2 {
 
     }
 
+//    public int[] twoSum(int[] nums, int target) {
+//        int[] result = new int[2];
+//
+//        int count = 1;
+//        int start = nums.length - 1;
+//        int i = 0;
+//        while (i < start) {
+//            // 外层循环
+//            if (nums[i] > target) {
+//                break;
+//            }
+//            System.out.println("外层循环第" + (count++) + "次,i=" + i);
+//            for (int j = start; j > i; j--) {
+//                System.out.println("内层循环第" + (count++) + "次,i=" + i + ",j=" + j);
+//                if (nums[i] + nums[j] == target) {
+//                    start = j - 1;
+//                    result[0] = i;
+//                    result[1] = j;
+//                    break;
+//                }
+//            }
+//            i++;
+//        }
+//        return result;
+//    }
+
     public int[] twoSum(int[] nums, int target) {
         int[] result = new int[2];
 
-        int count = 1;
-        int start = nums.length - 1;
-        int i = 0;
-        while (i < start) {
-            // 外层循环
-            if (nums[i] > target) {
-                break;
+        Map<Integer, Integer> maps = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (maps.containsKey(nums[i])) {
+                result[0] = maps.get(nums[i]);
+                result[1] = i;
+                return result;
             }
-            System.out.println("外层循环第" + (count++) + "次,i=" + i);
-            for (int j = start; j > i; j--) {
-                System.out.println("内层循环第" + (count++) + "次,i=" + i + ",j=" + j);
-                if (nums[i] + nums[j] == target) {
-                    start = j - 1;
-                    result[0] = i;
-                    result[1] = j;
-                    break;
-                }
-            }
-            i++;
+            maps.put(target - nums[i], i);
         }
-        return result;
+
+        return null;
     }
 }

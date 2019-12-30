@@ -12,12 +12,11 @@ import java.util.Date;
  * 	id INT NOT NULL AUTO_INCREMENT,
  * 	name varchar(100) NULL,
  * 	status TINYINT NULL,
- * 	create_time DATETIME NULL,
+ * 	create_time DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
  * 	primary key(id)
  * )
  * ENGINE=InnoDB
- * DEFAULT CHARSET=utf8mb4
- * COLLATE=utf8mb4_0900_ai_ci;
+ * DEFAULT CHARSET=utf8mb4;
  */
 public class MyTable implements Serializable {
 

@@ -10,6 +10,11 @@
         <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
+    <resultMap id="statusCountMap"   type="java.util.HashMap">
+        <result property="key" column="rut_KEY"  javaType="java.lang.Integer"/>
+        <result property="value" column="rut_VALUE" javaType="java.lang.Integer"/>
+    </resultMap>
+
     <select id="getById" parameterType="java.lang.Integer" resultMap="baseMap">
 		select a.* from my_table a where id = #{id}
 	</select>
@@ -31,6 +36,14 @@
         <if test="keyword != null and keyword != ''">
             and name like concat('%',#{keyword},'%')
         </if>
+    </select>
+
+    <select id="countByStatus" resultMap="statusCountMap" >
+        select
+            status as rut_KEY,
+            count(status) as rut_VALUE
+        from my_table
+        group by status
     </select>
 
 </mapper>

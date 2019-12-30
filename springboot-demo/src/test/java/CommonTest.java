@@ -1,18 +1,17 @@
 import com.alibaba.fastjson.JSON;
-import i.am.whp.DemoApplication;
-import i.am.whp.lock.ZookeeperLock;
 import i.am.whp.mapper.local.MyTableMapper;
+import i.am.whp.mapper.local.MyTableMapperImpl;
 import i.am.whp.mapper.qingqing.PhoneNumberDeviceRelationMapper;
+import i.am.whp.model.MyTable;
 import i.am.whp.service.MyService;
 import i.am.whp.test.MyBean;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.test.context.junit4.SpringRunner;
 
-public class CommonTest extends SpringBootTestBase{
+import java.util.Map;
+
+public class CommonTest extends SpringBootTestBase {
 
     @Autowired
     MyService myService;
@@ -24,6 +23,8 @@ public class CommonTest extends SpringBootTestBase{
     MyTableMapper myTableMapper;
     @Autowired
     RedisTemplate redisTemplate;
+    @Autowired
+    MyTableMapper myTableMapperImpl;
 
     @Test
     public void contextLoads() {
@@ -48,5 +49,11 @@ public class CommonTest extends SpringBootTestBase{
     @Test
     public void redis() {
         System.out.println(redisTemplate.hasKey("name"));
+    }
+
+    @Test
+    public void mybatisReturnCountMap() {
+        Map<Integer, Integer> countByStatus = myTableMapperImpl.countByStatus();
+        System.out.println(JSON.toJSONString(countByStatus));
     }
 }

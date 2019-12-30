@@ -13,13 +13,14 @@ public class Sort {
     public static void main(String[] args) {
         int[] nums = new int[]{13, 34, 12, -10, 34, 56, 23};
         // 从小到大
-        new Sort().bubbleSort(nums);
+//        new Sort().bubbleSort(nums);
+        new Sort().insertSort(nums);
 
         System.out.println(Arrays.toString(nums));
     }
 
     /**
-     * 冒泡排序
+     * 冒泡排序 o(n²) o(1) 可靠
      */
     public void bubbleSort(int[] nums) {
         for (int i = 0; i < nums.length - 1; i++) {
@@ -38,6 +39,12 @@ public class Sort {
      * 插入排序
      */
 
+    public void insertSort(int[] nums) {
+
+        for (int i = 0; i < nums.length; i++) {
+
+        }
+    }
     /**
      * 二分排序
      */

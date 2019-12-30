@@ -1,7 +1,11 @@
 import com.alibaba.fastjson.JSON;
+import reflecttest.changefieldvalue.TestBean;
 
+import java.util.Arrays;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -52,7 +56,21 @@ public class Test {
         regionIdNameMap.clear();
         System.out.println(regionIdNameMap);
 
-        IntStream.range(1, 10).forEach(System.out::println);
+
+        // 不好用的optional
+        TestBean testBean = null;
+        TestBean testBean1 = new TestBean();
+        testBean1.setId(1);
+        testBean1.setUrl(null);
+
+        // testBean1替换testBean
+        TestBean testBean2 = Optional.ofNullable(testBean).orElse(testBean1);
+        String defaultUrl = Optional
+                .of(testBean2)
+                .map(TestBean::getUrl)
+                .orElse("default");
+        System.out.println(defaultUrl);
+        System.out.println("原值未变" + testBean2.getUrl());
     }
 
 }

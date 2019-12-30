@@ -16,7 +16,7 @@
     <%--            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="--%>
     <%--            crossorigin="anonymous"></script>--%>
     <!-- 引入elementUI -->
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="/theme/index.css">
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 </head>
 <body>
