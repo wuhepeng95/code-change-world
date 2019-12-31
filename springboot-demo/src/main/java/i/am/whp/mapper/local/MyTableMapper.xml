@@ -10,14 +10,14 @@
         <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
-    <resultMap id="statusCountMap"   type="java.util.HashMap">
-        <result property="key" column="rut_KEY"  javaType="java.lang.Integer"/>
+    <resultMap id="statusCountMap" type="java.util.HashMap">
+        <result property="key" column="rut_KEY" javaType="java.lang.Integer"/>
         <result property="value" column="rut_VALUE" javaType="java.lang.Integer"/>
     </resultMap>
 
     <select id="getById" parameterType="java.lang.Integer" resultMap="baseMap">
-		select a.* from my_table a where id = #{id}
-	</select>
+        select a.* from my_table a where id = #{id}
+    </select>
     <select id="getList" parameterType="i.am.whp.domain.GetDataParam" resultMap="baseMap">
         select
         *
@@ -38,13 +38,24 @@
         </if>
     </select>
 
-    <select id="countByStatus" resultMap="statusCountMap" >
+    <select id="countByStatus" resultMap="statusCountMap">
         select
-            status as rut_KEY,
-            count(status) as rut_VALUE
+        status as rut_KEY,
+        count(status) as rut_VALUE
         from my_table
         group by status
     </select>
+
+    <update id="update" parameterType="java.lang.Integer">
+        update my_table
+        set status = -1
+        where id = #{id}
+    </update>
+
+    <insert id="insert" parameterType="i.am.whp.model.MyTable">
+        insert into my_table(name,status)
+        values(#{name},#{status,typeHandler=i.am.whp.handler.StatusHandler})
+    </insert>
 
 </mapper>
 

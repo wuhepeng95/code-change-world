@@ -16,7 +16,7 @@ import javax.sql.DataSource;
 import static i.am.whp.config.DataSourceQingqingConfig.SQL_SESSION_FACTORY;
 
 @Configuration
-@EnableTransactionManagement
+//@EnableTransactionManagement
 @MapperScan(basePackages = DataSourceQingqingConfig.PACKAGE_PATH, sqlSessionFactoryRef = SQL_SESSION_FACTORY)
 public class DataSourceQingqingConfig {
 

@@ -13,4 +13,6 @@ public interface MyService<T> {
 
     int getCount(GetDataParam param);
 
+    int updateAndInsert(MyTable param);
+
 }

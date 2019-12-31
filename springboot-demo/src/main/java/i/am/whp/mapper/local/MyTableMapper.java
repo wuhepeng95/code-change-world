@@ -15,4 +15,8 @@ public interface MyTableMapper {
     int getCount(GetDataParam param);
 
     Map<Integer, Integer> countByStatus();
+
+    int update(Integer id);
+
+    int insert(MyTable table);
 }

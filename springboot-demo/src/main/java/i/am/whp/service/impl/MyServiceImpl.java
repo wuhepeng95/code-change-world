@@ -9,6 +9,7 @@ import i.am.whp.service.MyService;
 import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
@@ -55,5 +56,13 @@ public class MyServiceImpl implements MyService<HashMap<String, String>> {
     @Override
     public int getCount(GetDataParam param) {
         return myTableMapper.getCount(param);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public int updateAndInsert(MyTable param) {
+        myTableMapper.update(param.getId());
+        myTableMapper.insert(param);
+        return 0;
     }
 }

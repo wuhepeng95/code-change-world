@@ -50,4 +50,14 @@ public class MyTableMapperImpl extends SqlSessionDaoSupport implements MyTableMa
         this.getSqlSession().select(MyTableMapper.class.getName() + ".countByStatus", handler);
         return handler.getMappedResults();
     }
+
+    @Override
+    public int update(Integer id) {
+        return 0;
+    }
+
+    @Override
+    public int insert(MyTable table) {
+        return 0;
+    }
 }
