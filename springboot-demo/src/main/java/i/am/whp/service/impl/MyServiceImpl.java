@@ -8,6 +8,8 @@ import i.am.whp.model.MyTable;
 import i.am.whp.service.MyService;
 import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.retry.annotation.Backoff;
+import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,6 +35,7 @@ public class MyServiceImpl implements MyService<HashMap<String, String>> {
 
     @Override
     @LogCost
+    @Retryable(value = Exception.class, maxAttempts = 4, backoff = @Backoff(delay = 2000L, multiplier = 1))
     @Cache(keyName = "whp-test:get_data", expireTime = 20)
     public List<MyTable> getData(GetDataParam param) {
         new Thread(() -> System.out.println("开启线程1：" + MDC.get("guid"))).start();
@@ -41,15 +44,16 @@ public class MyServiceImpl implements MyService<HashMap<String, String>> {
 //        Map<String, String> m = MDC.getCopyOfContextMap();
 //        MDC.setContextMap(m);
         new Thread(() -> {
-
             try {
-                TimeUnit.SECONDS.sleep(5);
+                TimeUnit.SECONDS.sleep(3);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             System.out.println("T2" + System.identityHashCode(MDC.getCopyOfContextMap()));
             System.out.println("开启线程2：" + MDC.get("guid"));
         }).start();
+        // 重试完才返回
+        //int i = 1/ 0;
         return myTableMapper.getList(param);
     }
 

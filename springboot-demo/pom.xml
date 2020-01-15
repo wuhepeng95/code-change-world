@@ -46,6 +46,14 @@
             </exclusions>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.springframework.retry/spring-retry -->
+        <dependency>
+            <groupId>org.springframework.retry</groupId>
+            <artifactId>spring-retry</artifactId>
+            <version>1.2.5.RELEASE</version>
+        </dependency>
+
+
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
@@ -117,9 +125,6 @@
             <artifactId>commons-codec</artifactId>
             <version>1.10</version>
         </dependency>
-
-
-
 
         <!--        <dependency>-->
         <!--            <groupId>org.springframework.boot</groupId>-->

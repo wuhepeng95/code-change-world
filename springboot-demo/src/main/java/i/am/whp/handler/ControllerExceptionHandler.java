@@ -19,7 +19,7 @@ public class ControllerExceptionHandler {
     public Map<String, Object> handleException(Exception e) {
         HashMap<String, Object> result = new HashMap<>();
         result.put("result", false);
-        result.put("msg", e.getCause().getCause().getCause());
+        result.put("msg",e.getMessage());
         return result;
     }
 }
