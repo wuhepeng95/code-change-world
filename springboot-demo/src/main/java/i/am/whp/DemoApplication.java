@@ -10,6 +10,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
 import org.springframework.retry.annotation.EnableRetry;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -18,9 +19,15 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 //@SpringBootApplication//表示为一个springboot应用：是下面三个注解的合集
 @EnableWebMvc
+@EnableRedisRepositories
 @SpringBootConfiguration
 @EnableAutoConfiguration
 @ComponentScan(basePackages = {"i.am.whp"})
+//@ComponentScan(basePackages = {"i.am.whp"},
+//        excludeFilters = {
+//                @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = MqController.class),
+//                @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = DirectRabbitConfig.class)
+//        })
 @EnableRetry
 //"i.am.whp.service", "i.am.whp.controller","i.am.whp.config"
 public class DemoApplication extends SpringBootServletInitializer implements WebMvcConfigurer {

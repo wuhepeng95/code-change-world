@@ -1,10 +1,13 @@
 import com.alibaba.fastjson.JSON;
 import reflecttest.changefieldvalue.TestBean;
 
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -69,11 +72,15 @@ public class Test {
         System.out.println(defaultUrl);
         System.out.println("原值未变" + testBean2.getUrl());
 
-        for (int i = 0; i < 100; i++) {
-            Random random = new Random();
-            System.out.println(random.nextInt(3));
-
-        }
+        HashSet treeSet = new HashSet();
+        treeSet.add("one");
+        treeSet.add("two");
+        treeSet.add("two");
+        treeSet.add("three");
+        treeSet.add("four");
+        treeSet.add("four");
+        treeSet.add("five");
+        System.out.println(treeSet);
     }
 
 }

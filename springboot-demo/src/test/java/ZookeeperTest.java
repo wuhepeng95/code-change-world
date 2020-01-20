@@ -15,6 +15,9 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * ZK 加锁思想：
+ *  根据路径生成zookeeper的node作为一个标识，只有这个节点
+ *
  * @author wuhepeng
  * @date 2019/10/16
  */
@@ -26,7 +29,7 @@ public class ZookeeperTest extends SpringBootTestBase {
     @Resource
     private Client client;
 
-    @Resource(name = "initRedisTemplate")
+    @Resource
     RedisTemplate redisTemplate;
 
     @Test
@@ -38,15 +41,23 @@ public class ZookeeperTest extends SpringBootTestBase {
 
     @Test
     public void testLock() throws IOException {
-        // 模拟高并发
-        CountDownLatch countDownLatch = new CountDownLatch(5);
+        // 模拟高并发 用户抢票
+        CountDownLatch countDownLatch = new CountDownLatch(10);
 
         ArrayList<BuyTickReq> arrayList = new ArrayList();
-        arrayList.add(BuyTickReq.builder().usrId(1).buyNum(4).build());
-        arrayList.add(BuyTickReq.builder().usrId(2).buyNum(5).build());
-        arrayList.add(BuyTickReq.builder().usrId(3).buyNum(8).build());
-        arrayList.add(BuyTickReq.builder().usrId(4).buyNum(8).build());
-        arrayList.add(BuyTickReq.builder().usrId(5).buyNum(4).build());
+        // 如果同个用户发了多个相同的请求 => 前端控制 路由过滤 后端控制
+        // 防止超卖的情况
+        //
+        arrayList.add(BuyTickReq.builder().usrId(1).buyNum(1).build());// case1
+        arrayList.add(BuyTickReq.builder().usrId(2).buyNum(2).build());// case2
+        arrayList.add(BuyTickReq.builder().usrId(3).buyNum(3).build());// case3
+        arrayList.add(BuyTickReq.builder().usrId(4).buyNum(4).build());// case4
+        arrayList.add(BuyTickReq.builder().usrId(5).buyNum(5).build());// case5
+        arrayList.add(BuyTickReq.builder().usrId(6).buyNum(6).build());// case6
+        arrayList.add(BuyTickReq.builder().usrId(7).buyNum(7).build());// case7
+        arrayList.add(BuyTickReq.builder().usrId(8).buyNum(8).build());// case8
+        arrayList.add(BuyTickReq.builder().usrId(9).buyNum(9).build());// case9
+        arrayList.add(BuyTickReq.builder().usrId(10).buyNum(10).build());// case10
 
         // 初始化总数
         redisTemplate.opsForValue().set("000000_ticks_total", 20, 1000L, TimeUnit.SECONDS);
@@ -54,9 +65,8 @@ public class ZookeeperTest extends SpringBootTestBase {
             new Thread(() -> {
                 try {
                     countDownLatch.await();
-                    /*-----------------------------模拟并发代码块start---------------------------*/
-
-                    client.lock(new DemoMutex<BuyTickReq>("票总数") {
+                    /*----------------模拟并发控制代码块start（相当于service业务代码）---------------*/
+                    client.lock(new DemoMutex<BuyTickReq>(-1) {
                         @Override
                         public BuyTickReq execute() {
                             UUID uuid = UUID.randomUUID();

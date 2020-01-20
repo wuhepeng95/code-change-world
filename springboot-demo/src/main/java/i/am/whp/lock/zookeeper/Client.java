@@ -62,6 +62,7 @@ public class Client implements ApplicationContextAware {
         try {
             try {
                 success = lock.acquire(mutex.getTimeout(), mutex.getTimeUnit());
+                logger.error("add zk node path: {}", path);
             } catch (Exception e) {
                 throw new RuntimeException(String.format("resource path %s lock error.", path), e);
             }

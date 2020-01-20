@@ -9,7 +9,7 @@ public class ClearWorkspaceApp {
      * * @param args
      */
     public static void main(String[] args) {
-        String filePath = "/Users/whp/workspace-zdxf";
+        String filePath = "E:\\Java\\04_轻轻家教\\code\\workspace";
         File fileDic = new File(filePath);
         if (fileDic.isDirectory()) {
             System.out.println("begin Scan");
@@ -24,7 +24,7 @@ public class ClearWorkspaceApp {
      */
     private static void scan(File f) {
         if (f.isDirectory()) {
-            if (f.getName().equals("target")) {
+            if (f.getName().equals(".git")) {
                 System.out.println(f.getName());
                 deleteDir(f);
             }

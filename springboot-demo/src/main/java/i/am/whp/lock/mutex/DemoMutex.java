@@ -9,19 +9,23 @@ import i.am.whp.lock.zookeeper.Mutex;
 public abstract class DemoMutex<T> extends Mutex<T> {
     private final static String path = "demo1/set/";
 
-    private String id;
+    private Integer userId;
 
-    public DemoMutex(String id) {
-        this.id = id;
+    public DemoMutex(Integer id) {
+        this.userId = id;
     }
 
-    public String getId() {
-        return id;
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     @Override
     public String getResourcePath() {
-        return path + id;
+        return path + userId;
     }
 
 }
