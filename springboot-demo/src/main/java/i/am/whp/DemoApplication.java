@@ -10,6 +10,9 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
 import org.springframework.retry.annotation.EnableRetry;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
@@ -38,6 +41,30 @@ public class DemoApplication extends SpringBootServletInitializer implements Web
         log.info("start springboot project : springboot-demo");
         LogUtils.initGlobalMDC();
         SpringApplication.run(DemoApplication.class, args);
+
+//        DefaultResourceLoader resourceLoader = new DefaultResourceLoader();
+//        resourceLoader.addProtocolResolver(new ProtocolResolver() {
+//            @Override
+//            public Resource resolve(String location, ResourceLoader resourceLoader) {
+//                return new ClassPathResource(location);
+//            }
+//        });
+//
+//        Resource resource = resourceLoader.getResource("banner.txt");
+//        try {
+//            InputStream inputStream = resource.getInputStream();
+//            System.out.println(StreamUtils.copyToString(inputStream, Charset.forName("UTF-8")));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+    }
+
+    private static Resource resolve(String location, ResourceLoader loader) {
+        if (location.contains("test")) {
+            return new ClassPathResource(location);
+        }
+        return new ClassPathResource(location);
     }
 
     @Override
