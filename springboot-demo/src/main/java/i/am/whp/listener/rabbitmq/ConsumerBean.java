@@ -1,4 +1,4 @@
-package i.am.whp.mq;
+package i.am.whp.listener.rabbitmq;
 
 import i.am.whp.model.MyTable;
 import org.slf4j.Logger;
