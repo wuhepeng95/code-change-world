@@ -1,4 +1,4 @@
-package threadtest;
+package threadtest.sync;
 
 import java.util.concurrent.TimeUnit;
 

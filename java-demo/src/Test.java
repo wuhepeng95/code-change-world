@@ -1,14 +1,7 @@
 import com.alibaba.fastjson.JSON;
 import reflecttest.changefieldvalue.TestBean;
 
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Random;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.UUID;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -81,6 +74,22 @@ public class Test {
         treeSet.add("four");
         treeSet.add("five");
         System.out.println(treeSet);
+
+        List<Bean> beanList = new ArrayList<>();
+        beanList.add(new Bean(12,12));
+
+        beanList.remove(new Bean(12,12));
+        System.out.println(beanList);
+    }
+
+    static class Bean{
+        private long teacherId;
+        private long userId;
+
+        public Bean(long teacherId, long userId) {
+            this.teacherId = teacherId;
+            this.userId = userId;
+        }
     }
 
 }

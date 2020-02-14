@@ -1,4 +1,4 @@
-package threadtest.threadPoolDemo;
+package threadtest;
 
 import java.util.HashMap;
 import java.util.Random;

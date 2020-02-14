@@ -1,5 +1,11 @@
-package threadtest;
+package threadtest.sync;
 
+/**
+ * synchronized 锁的不是代码块，而是对象
+ * 对象可以new一个，可以用this指定同步方法
+ *
+ * 支持重入（可重入锁）
+ */
 public class Sync {
 
     public static void main(String[] args) {

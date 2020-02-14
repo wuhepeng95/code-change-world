@@ -1,5 +1,8 @@
-package threadtest;
+package threadtest.sync;
 
+/**
+ * 写锁必须有，读锁根据业务来判断
+ */
 public class DirtyRead {
     private String userName = "pdz";
     private String password = "12345";

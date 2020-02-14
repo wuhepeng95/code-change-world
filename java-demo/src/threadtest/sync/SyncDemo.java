@@ -1,4 +1,4 @@
-package threadtest;
+package threadtest.sync;
 
 /**
  * Created by whp on 2018/9/4
