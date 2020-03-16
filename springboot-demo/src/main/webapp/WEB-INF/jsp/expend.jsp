@@ -7,10 +7,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>Title</title>
-    <script type="text/javascript" src="../js/vue.js"></script>
-</head>
 <body>
 <div id="test">
     <%--        <p>{{introduce}}<span>{{less ? '...省略' ： '收起'}}</span></p>--%>
@@ -20,7 +16,6 @@
     <span style="font-family:PingFangSC-Regular;width:20px;font-size:12px;color:#2a5193;line-height:12px;text-align:left;"
           v-if="isShowMore" @click="showmoreDesc($event)">展开全部</span>
 </div>
-</body>
 
 <script>
     new Vue({
@@ -53,6 +48,8 @@
         }
     })
 </script>
+
+</body>
 
 <style>
     .m-content.overflow-line {
