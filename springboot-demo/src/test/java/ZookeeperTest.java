@@ -47,7 +47,7 @@ public class ZookeeperTest extends SpringBootTestBase {
         ArrayList<BuyTickReq> arrayList = new ArrayList();
         // 如果同个用户发了多个相同的请求 => 前端控制 路由过滤 后端控制
         // 防止超卖的情况
-        //
+        // 当前锁的作用是控制请求只有一个能进入买票代码块，锁是一个固定值
         arrayList.add(BuyTickReq.builder().usrId(1).buyNum(1).build());// case1
         arrayList.add(BuyTickReq.builder().usrId(2).buyNum(2).build());// case2
         arrayList.add(BuyTickReq.builder().usrId(3).buyNum(3).build());// case3

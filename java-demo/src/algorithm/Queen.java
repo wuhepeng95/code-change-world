@@ -2,7 +2,7 @@ package algorithm;
 
 /**
  * Created by wuhp on 2018/2/26
- * 八皇后问题
+ * 八皇后问题 回溯法
  */
 public class Queen {/*同栏是否有皇后，1表示有*/
     private int[] column;/*右上至左下是否有皇后*/
@@ -43,7 +43,66 @@ public class Queen {/*同栏是否有皇后，1表示有*/
     }
 
     public static void main(String[] args) {
-        Queen queen = new Queen();
-        queen.backtrack(1);
+//        Queen queen = new Queen();
+//        queen.backtrack(-1);
+        int[][] chess = new int[8][8];
+//        chess[0][2] = 1;
+
+        for (int i = 0; i < chess.length; i++) {
+            int column = 0;
+            for (int j = 0; j < chess[i].length; j++) {
+                if (chess[i][j] == 0){
+                    column = j;
+                    break;
+                }
+            }
+            if (column >= chess[i].length){
+                throw new RuntimeException("failed");
+            }
+            // ensure
+            chess[i][column] = 1;
+            // mark
+            markChess(i, column, chess);
+
+        }
+        printChess(chess);
+    }
+
+    public static void markChess(int row, int column, int[][] chess) {
+        for (int i = row + 1; i < chess.length; i++) {
+            for (int j = column; j < chess[i].length; j++) {
+                if (i == row) {
+                    chess[i][j] = -1;
+                    continue;
+                }
+                if (j == column) {
+                    chess[i][j] = -1;
+                    continue;
+                }
+                if (i - j == row - column) {
+                    chess[i][j] = -1;
+                    continue;
+                }
+                if (i + j == row + column) {
+                    chess[i][j] = -1;
+                }
+            }
+        }
+        printChess(chess);
+    }
+
+    public static void printChess(int[][] chess) {
+        System.out.println("-------begin-------");
+        for (int[] ints : chess) {
+            for (int anInt : ints) {
+                if (anInt == -1) {
+                    System.out.print(0 + "");
+                } else {
+                    System.out.print(anInt + "");
+                }
+            }
+            System.out.println();
+        }
+        System.out.println("-------end-------");
     }
 }

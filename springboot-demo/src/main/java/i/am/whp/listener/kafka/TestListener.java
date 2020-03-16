@@ -2,6 +2,7 @@ package i.am.whp.listener.kafka;
 
 import i.am.whp.config.KafkaConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.springframework.context.annotation.Profile;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Component;
  * @author wuhepeng on 2020/2/14
  */
 @Component
+@Profile("with_rabbitmq")
 public class TestListener {
 
     @KafkaListener(containerFactory = KafkaConfig.KAFKA_LISTENER_CONTAINER_FACTORY,

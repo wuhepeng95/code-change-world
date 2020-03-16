@@ -1,7 +1,5 @@
 package algorithm;
 
-import com.alibaba.fastjson.support.odps.udf.CodecCheck.A;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -106,7 +104,6 @@ public class Sum3 {
         System.out.println("sortTime:" + (System.currentTimeMillis() - startTime) +"ms");
         // [[0, 1, -1], [-1, 0, 1]]
         Set<List<Integer>> resultList = new HashSet<>();
-        List<List<Integer>> resultList2 = new ArrayList<>();
 
         for (int k = 0; k < nums.length - 1; k++) {
             // 如果当前数大于0，后面肯定没有符合的值
@@ -134,7 +131,7 @@ public class Sum3 {
 //                        resultOne.add(nums[k]);
 //                        resultOne.add(nums[i]);
 //                        resultOne.add(nums[j]);
-                        resultList.add(Arrays.asList(nums[k],nums[i],nums[j]));
+                        resultList.add(Arrays.asList(nums[k],nums[i],nums[j]));/*相比上面效率大大提升*/
                         break;
                     }
                 }
@@ -144,7 +141,6 @@ public class Sum3 {
 
         System.out.println(System.currentTimeMillis() - startTime +"ms");
         System.out.println(resultList.size());
-        System.out.println(resultList2.size());
         // 去重复
         return new ArrayList<>(resultList);
     }

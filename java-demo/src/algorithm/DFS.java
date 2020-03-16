@@ -73,9 +73,6 @@ public class DFS {
     }
 
     private boolean inRange(int x, int y) {
-        if (x > -1 && x < row && y > -1 && y < col) {
-            return true;
-        }
-        return false;
+        return x > -1 && x < row && y > -1 && y < col;
     }
 }

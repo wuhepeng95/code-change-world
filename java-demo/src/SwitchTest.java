@@ -8,7 +8,8 @@ public class SwitchTest {
         // 2、匹配后 向下执行语句直到遇到break
         switch (i) {
             case 1:
-                System.out.println("case1");
+            case 8:
+                System.out.println("case1|8");
             case 2:
                 System.out.println("case2");
                 break;
