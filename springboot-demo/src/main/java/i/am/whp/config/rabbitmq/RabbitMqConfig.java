@@ -1,4 +1,4 @@
-package i.am.whp.config.mq;
+package i.am.whp.config.rabbitmq;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;

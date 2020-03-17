@@ -1,4 +1,4 @@
-package i.am.whp.config;
+package i.am.whp.config.kafka;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -16,12 +16,9 @@ import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @author niexi
- */
 @Configuration
 @EnableKafka
-@Profile("with_rabbitmq")
+@Profile("with_kafka")
 public class KafkaConfig {
 
     public static final String KAFKA_LISTENER_CONTAINER_FACTORY = "kafkaListenerContainerFactory";

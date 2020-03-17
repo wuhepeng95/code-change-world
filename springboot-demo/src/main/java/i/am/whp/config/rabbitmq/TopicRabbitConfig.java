@@ -1,4 +1,4 @@
-package i.am.whp.config.mq;
+package i.am.whp.config.rabbitmq;
 
 public class TopicRabbitConfig {
 

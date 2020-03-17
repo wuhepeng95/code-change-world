@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisClientConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
@@ -15,6 +16,7 @@ import redis.clients.jedis.JedisPoolConfig;
  * 自定义redisTemplate
  * Created by wuhepeng on 2019/8/31
  */
+@Profile("with_redis")
 @Configuration
 public class RedisConfig {
 

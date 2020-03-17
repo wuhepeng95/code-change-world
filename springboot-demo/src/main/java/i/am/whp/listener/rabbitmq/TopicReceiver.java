@@ -1,6 +1,6 @@
 package i.am.whp.listener.rabbitmq;
 
-import i.am.whp.config.mq.TopicRabbitConfig;
+import i.am.whp.config.rabbitmq.TopicRabbitConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.ExchangeTypes;
