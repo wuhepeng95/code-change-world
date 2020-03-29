@@ -1,3 +1,5 @@
+package collection;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +9,8 @@ import java.util.List;
  * 报错ConcurrentModificationException，单线程和双线程-原因及解决方案
  * https://www.cnblogs.com/dolphin0520/p/3933551.html
  */
-public class IteratorTest {
+public class ListDeleteTest {
+
     public static void main(String[] args) throws CloneNotSupportedException {
         List<String> list = new ArrayList<>();
         list.add("2");
@@ -28,5 +31,12 @@ public class IteratorTest {
 //            }
 //        }
         System.out.println(list.toString());
+
+        // 删除List里的对象：
+        // 方式一：增强for循环，remove(Obj) => 快速失败
+        // 方式二：fori循环，remove(index) => 第二遍size会变/第二次get会OutOfBounds
+        // 方式三：lambda表达式filter，可行
+        // 方式四：for循环重新add到一个新的数据中
+        // 方式五：使用迭代器循环并remove
     }
 }

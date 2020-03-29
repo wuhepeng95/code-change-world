@@ -1,7 +1,4 @@
-import com.alibaba.fastjson.JSON;
-import reflecttest.changefieldvalue.TestBean;
-
-import java.util.*;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -41,55 +38,5 @@ public class Test {
         System.out.println(1 * 1.0 / 3L);
 
         System.out.println(UUID.randomUUID());
-
-        Map<Long, String> regionIdNameMap = new LinkedHashMap<>();
-        regionIdNameMap.put(1L, "123");
-        regionIdNameMap.put(2L, "123");
-        System.out.println(JSON.toJSONString(regionIdNameMap));
-
-        regionIdNameMap.clear();
-        System.out.println(regionIdNameMap);
-
-        // 不好用的optional
-        TestBean testBean = null;
-        TestBean testBean1 = new TestBean();
-        testBean1.setId(1);
-        testBean1.setUrl(null);
-
-        // testBean1替换testBean
-        TestBean testBean2 = Optional.ofNullable(testBean).orElse(testBean1);
-        String defaultUrl = Optional
-                .of(testBean2)
-                .map(TestBean::getUrl)
-                .orElse("default");
-        System.out.println(defaultUrl);
-        System.out.println("原值未变" + testBean2.getUrl());
-
-        HashSet treeSet = new HashSet();
-        treeSet.add("one");
-        treeSet.add("two");
-        treeSet.add("two");
-        treeSet.add("three");
-        treeSet.add("four");
-        treeSet.add("four");
-        treeSet.add("five");
-        System.out.println(treeSet);
-
-        List<Bean> beanList = new ArrayList<>();
-        beanList.add(new Bean(12,12));
-
-        beanList.remove(new Bean(12,12));
-        System.out.println(beanList);
     }
-
-    static class Bean{
-        private long teacherId;
-        private long userId;
-
-        public Bean(long teacherId, long userId) {
-            this.teacherId = teacherId;
-            this.userId = userId;
-        }
-    }
-
 }
