@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 public class Test {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         /**
          * 与&(短路与&&)：一假则假
          * 或|(短路或||)：一真则真
@@ -38,5 +38,12 @@ public class Test {
         System.out.println(1 * 1.0 / 3L);
 
         System.out.println(UUID.randomUUID());
+
+        int i = 56415614;
+        int i1 = 1;
+        while (true){
+            System.out.println(i1 *= 10);
+            Thread.sleep(500);
+        }
     }
 }

@@ -75,4 +75,9 @@ public class GetMaxSum {
         System.out.println("最大值为" + max + " 下标为：" + start + "到" + end);
     }
 
+    /**
+     * 给定字符串 拆成4个255以内的数有多少拆法
+     * 123.3.255.47
+     */
+
 }
