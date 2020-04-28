@@ -69,4 +69,9 @@ public class MyServiceImpl implements MyService<HashMap<String, String>> {
         myTableMapper.insert(param);
         return 0;
     }
+
+    @Override
+    public List<MyTable> whereTest(MyTable param) {
+        return myTableMapper.whereTest(param);
+    }
 }

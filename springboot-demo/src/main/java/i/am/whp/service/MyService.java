@@ -15,4 +15,6 @@ public interface MyService<T> {
 
     int updateAndInsert(MyTable param);
 
+    List<MyTable> whereTest(MyTable param);
+
 }

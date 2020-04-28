@@ -19,4 +19,6 @@ public interface MyTableMapper {
     int update(Integer id);
 
     int insert(MyTable table);
+
+    List<MyTable> whereTest(MyTable param);
 }

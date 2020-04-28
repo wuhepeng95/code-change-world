@@ -60,4 +60,9 @@ public class MyTableMapperImpl extends SqlSessionDaoSupport implements MyTableMa
     public int insert(MyTable table) {
         return 0;
     }
+
+    @Override
+    public List<MyTable> whereTest(MyTable param) {
+        return null;
+    }
 }
