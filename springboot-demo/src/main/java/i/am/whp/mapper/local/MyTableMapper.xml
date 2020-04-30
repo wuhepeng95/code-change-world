@@ -60,9 +60,9 @@
     <select id="whereTest" parameterType="i.am.whp.model.MyTable" resultMap="statusCountMap">
         select * from my_table
         <where>
-            create_time = '2020-03-17 12:48:19'
+            and create_time = '2020-03-17 12:48:19' <!--and都会处理-->
             <if test="name != ''">
-                and name rlike #{name}
+                and name rlike #{name}  <!--and会处理 多去少不补-->
             </if>
             <if test="status != null">
                 and status = #{status,typeHandler=i.am.whp.handler.StatusHandler}
