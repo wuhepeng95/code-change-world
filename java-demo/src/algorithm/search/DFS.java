@@ -1,11 +1,11 @@
-package algorithm;
+package algorithm.search;
 
 import java.util.Arrays;
 
 /**
  * 判断一个字符串'ABC'，在一个二维数组中[[]]存在一条路径
  *
- * dfs深度优先搜索
+ * dfs 深度优先搜索 【 Depth-First-Search 】
  *
  * @author wuhepeng
  * @date 2019/12/23

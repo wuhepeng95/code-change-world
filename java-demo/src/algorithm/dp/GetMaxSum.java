@@ -1,10 +1,10 @@
-package algorithm;
+package algorithm.dp;
 
 import java.util.Arrays;
 
 /**
  * Created by wuhp on 2018/3/21
- * 最大子串和问题
+ * 子串最大和问题
  */
 public class GetMaxSum {
 
@@ -41,7 +41,7 @@ public class GetMaxSum {
     /**
      * 动态规划方法(DP) 时间复杂度为O(n)
      * 原理：
-     * 对应状态转化方程 stats[] = [2, 5, 3, 6, 10, 1, 4]
+     * 对应状态转化方程 stats[] = [2, 5, 3, 6, 10, 1, 5]
      */
     public static void method2() {
         int[] nums = {2, 3, -2, 3, 4, -9, 4};
@@ -74,10 +74,4 @@ public class GetMaxSum {
         System.out.println(Arrays.toString(stats));
         System.out.println("最大值为" + max + " 下标为：" + start + "到" + end);
     }
-
-    /**
-     * 给定字符串 拆成4个255以内的数有多少拆法
-     * 123.3.255.47
-     */
-
 }
