@@ -29,21 +29,11 @@ public class Test {
         }
 
         // java正在取第一个匹配到的参数
-        String reg = "8r";
+        String reg = "<[^>^<]*>";
         Pattern pattern = Pattern.compile(reg);
-        Matcher matcher = pattern.matcher("sdkfh2348y92h32 8r h2r82 3h- j23rji 8r");
-        System.out.println(matcher.find());
-        System.out.println(matcher.group());
-
-        System.out.println(1 * 1.0 / 3L);
-
-        System.out.println(UUID.randomUUID());
-
-        int i = 56415614;
-        int i1 = 1;
-        while (true){
-            System.out.println(i1 *= 10);
-            Thread.sleep(500);
+        Matcher matcher = pattern.matcher("胜多负少生<不知道222>巅峰大是大非<不知道><你好啊>");
+        while (matcher.find()){
+            System.out.println(matcher.group());
         }
     }
 }
