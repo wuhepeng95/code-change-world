@@ -55,7 +55,8 @@ public class TestBase {
         // lambda最简写法
         Callable<Object> call2 = () -> whpTestDao.count(param);
 
-        // summit后执行 返回结果
+        // submit后执行 返回结果
+        // 注意 submit之后后吞异常 返回null
         Future<List<WhpTest2>> submit = executorService.submit(call1);
         Future<Object> submit1 = executorService.submit(call2);
 

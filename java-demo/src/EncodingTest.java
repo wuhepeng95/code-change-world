@@ -3,6 +3,7 @@ import sockettest.URLDemo;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 /**
@@ -13,14 +14,15 @@ import java.util.Arrays;
 public class EncodingTest {
     public static void main(String[] args) throws UnsupportedEncodingException, MalformedURLException {
         System.out.println("-------------------------获取常见编码格式的编码的字符数组--------------------------------");
-        String strs = "a";
+        String strs = "我不爱你了";
         System.out.println("Unicode编码:" + Arrays.toString(strs.getBytes(Charset.forName("Unicode"))));//Unicode也有UCS-4规范，就是用 4个字节来编码字符
-        System.out.println("ISO-8859-1编码:" + Arrays.toString(strs.getBytes(Charset.forName("ISO-8859-1"))));//单字节编码
+        System.out.println("ISO-8859-1编码:" + Arrays.toString(strs.getBytes(StandardCharsets.ISO_8859_1)));//单字节编码
         System.out.println("GB2312编码:" + Arrays.toString(strs.getBytes(Charset.forName("GB2312"))));//1-2
         System.out.println("GBK编码:" + Arrays.toString(strs.getBytes(Charset.forName("GBK"))));//1-2
-        System.out.println("UTF-8:" + Arrays.toString(strs.getBytes(Charset.forName("UTF-8"))));//1-4
-        System.out.println("UTF-16:" + Arrays.toString(strs.getBytes(Charset.forName("UTF-16"))));
+        System.out.println("UTF-8:" + Arrays.toString(strs.getBytes(StandardCharsets.UTF_8)));//1-4
+        System.out.println("UTF-16:" + Arrays.toString(strs.getBytes(StandardCharsets.UTF_16)));
         System.out.println("UTF-32:" + Arrays.toString(strs.getBytes(Charset.forName("UTF-32"))));//四字节编码
+        System.out.println("默认编码UTF-8" + Arrays.toString(strs.getBytes()));
 
         System.out.println("-------------------------1、将GBK转码为UTF-8 -> 中文乱码，反转回来 -> 无法复原，中文乱码--------------------------------");
         String gbk = new String("123abc我爱你".getBytes("GBK"), "UTF-8");
