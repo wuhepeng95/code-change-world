@@ -28,7 +28,7 @@ public class HelloController {
         return JSON.toJSONString(myService.hi());
     }
 
-    @RequestMapping(value = "/getData", method = {RequestMethod.POST})
+    @RequestMapping(value = "/getData", method = {RequestMethod.POST,RequestMethod.GET})
     @ResponseBody
     public Map<String, Object> getData(GetDataParam param) {
         Map<String, Object> response = new HashMap<>();

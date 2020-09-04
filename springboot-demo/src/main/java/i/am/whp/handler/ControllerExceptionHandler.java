@@ -14,12 +14,13 @@ import java.util.Map;
 @ControllerAdvice
 public class ControllerExceptionHandler {
 
-    @ExceptionHandler({Exception.class})
-    @ResponseBody
-    public Map<String, Object> handleException(Exception e) {
-        HashMap<String, Object> result = new HashMap<>();
-        result.put("result", false);
-        result.put("msg",e.toString());
-        return result;
-    }
+	@ExceptionHandler({Exception.class})
+	@ResponseBody
+	public Map<String, Object> handleException(Exception e) {
+		HashMap<String, Object> result = new HashMap<>();
+		result.put("result", false);
+        result.put("msg","后台服务异常");
+//		result.put("msg", e.toString());
+		return result;
+	}
 }

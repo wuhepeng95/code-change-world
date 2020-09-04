@@ -22,6 +22,7 @@
     </build>
     <modules>
         <module>java-demo</module>
+        <module>netty-demo</module>
         <module>timed-task-demo</module>
         <module>web-demo</module>
         <module>webservice-demo</module>
