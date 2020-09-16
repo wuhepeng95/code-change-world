@@ -1,16 +1,16 @@
-package algorithm.search;
+package algorithm.search.dfs;
 
 import java.util.Arrays;
 
 /**
- * 判断一个字符串'ABC'，在一个二维数组中[[]]存在一条路径
- *
+ * 判断一个字符串'ABCCED'，在一个二维数组中[[]]存在一条路径
+ * <p>
  * dfs 深度优先搜索 【 Depth-First-Search 】
  *
  * @author wuhepeng
  * @date 2019/12/23
  */
-public class DFS {
+public class FindPathFromArray {
 
     private boolean[][] isMarked;
     private int[][] dirction = {{0, -1}, {0, 1}, {-1, 0}, {1, 0}};
@@ -27,7 +27,7 @@ public class DFS {
                 {'A', 'D', 'E', 'E'}
         };
         System.out.println(Arrays.deepToString(board));
-        System.out.println(new DFS().exist(board, "ABCCED"));
+        System.out.println(new FindPathFromArray().exist(board, "ABCCED"));
     }
 
     public boolean exist(char[][] board, String word) {
