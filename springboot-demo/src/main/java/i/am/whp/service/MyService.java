@@ -17,4 +17,7 @@ public interface MyService<T> {
 
     List<MyTable> whereTest(MyTable param);
 
+    boolean testRollback();
+
+    boolean sqlException();
 }

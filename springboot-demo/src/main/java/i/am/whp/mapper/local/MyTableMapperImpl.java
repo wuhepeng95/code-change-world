@@ -52,7 +52,7 @@ public class MyTableMapperImpl extends SqlSessionDaoSupport implements MyTableMa
     }
 
     @Override
-    public int update(Integer id) {
+    public int updateStatus(Integer id) {
         return 0;
     }
 

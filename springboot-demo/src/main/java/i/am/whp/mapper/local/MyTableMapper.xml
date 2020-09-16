@@ -46,7 +46,7 @@
         group by status
     </select>
 
-    <update id="update" parameterType="java.lang.Integer">
+    <update id="updateStatus" parameterType="java.lang.Integer">
         update my_table
         set status = -1
         where id = #{id}

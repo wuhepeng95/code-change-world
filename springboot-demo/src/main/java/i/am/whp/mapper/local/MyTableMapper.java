@@ -16,7 +16,7 @@ public interface MyTableMapper {
 
     Map<Integer, Integer> countByStatus();
 
-    int update(Integer id);
+    int updateStatus(Integer id);
 
     int insert(MyTable table);
 

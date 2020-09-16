@@ -28,13 +28,22 @@ public class HelloController {
         return JSON.toJSONString(myService.hi());
     }
 
-    @RequestMapping(value = "/getData", method = {RequestMethod.POST,RequestMethod.GET})
+    @RequestMapping(value = "/getData", method = {RequestMethod.POST, RequestMethod.GET})
     @ResponseBody
     public Map<String, Object> getData(GetDataParam param) {
         Map<String, Object> response = new HashMap<>();
         response.put("result", true);
         response.put("data", myService.getData(param));
         response.put("count", myService.getCount(param));
+        return response;
+    }
+
+    @RequestMapping(value = "/testRollback", method = {RequestMethod.POST, RequestMethod.GET})
+    @ResponseBody
+    public Map<String, Object> testRollback() {
+        Map<String, Object> response = new HashMap<>();
+        response.put("result", true);
+        myService.testRollback();
         return response;
     }
 }
