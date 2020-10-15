@@ -8,6 +8,7 @@ import io.netty.handler.codec.DelimiterBasedFrameDecoder;
 
 public class ChildChannelHandler extends ChannelInitializer<SocketChannel> {
 
+    @Override
     protected void initChannel(SocketChannel socketChannel) throws Exception {
         ByteBuf byteBuf= Unpooled.copiedBuffer("$".getBytes());
         socketChannel.pipeline().addLast(new DelimiterBasedFrameDecoder(1024,byteBuf));

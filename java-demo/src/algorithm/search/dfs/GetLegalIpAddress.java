@@ -23,7 +23,7 @@ public class GetLegalIpAddress {
         // 截止条件 层级
         if (level == 4 + 1 || index == string.length() - 1) {
             if (level == 4 + 1 && index == string.length() - 1) {
-                res.forEach(s -> System.out.print(s + "."));
+                System.out.print(String.join(".", res));
                 System.out.println("出口");
             }
             return;
