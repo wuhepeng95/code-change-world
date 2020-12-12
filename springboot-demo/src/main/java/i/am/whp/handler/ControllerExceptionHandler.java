@@ -20,7 +20,7 @@ public class ControllerExceptionHandler {
 		HashMap<String, Object> result = new HashMap<>();
 		result.put("result", false);
         result.put("msg","后台服务异常");
-//		result.put("msg", e.toString());
+		result.put("detail", e.toString());
 		return result;
 	}
 }

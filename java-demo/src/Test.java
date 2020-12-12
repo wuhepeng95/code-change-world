@@ -1,5 +1,12 @@
-import java.math.BigDecimal;
-import java.util.*;
+import org.apache.commons.lang.StringUtils;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -34,42 +41,42 @@ public class Test {
         stringList.forEach(s -> ss.append(s).append(":"));
         System.out.println(ss);
 
+        // String的三种连接方式
         String concat = stringList.stream().reduce("", (s1, str) -> s1.concat(str.toLowerCase() + ":"));
         System.out.println(concat);
-
         String concat2 = stringList.stream().map(s -> s.toLowerCase()).collect(Collectors.joining(":"));
         System.out.println(concat2);
-
         System.out.println(String.join(":", stringList));
 
+        // Arrays.asList慎用
         int[] data = {1, 2, 3, 4, 5};
         List list = Arrays.asList(data);
         System.out.println("列表中的元素数量是：" + list.size());
 
         System.out.println("核心线程数(CPU核数):" + Runtime.getRuntime().availableProcessors());
 
+        // 集合size慎用
         Set<Long> agentIdS = new HashSet<>();
         agentIdS.add(null);
         System.out.println(agentIdS.size());
-
-//        TreeSet<String> treeSet = new TreeSet<>();
-//        treeSet.add(null);
-
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add(null);
         System.out.println(arrayList.size());
 
+        // 对象与引用问题 注意原map也变了
         Map<String, String> map = new HashMap<>();
         map.put("2", "2");
-
-        Map<String, String> map2 = map;
+        Map<String, String> map2 = map;//redundant冗余
         map2.put("1", "1");
         System.out.println(map);
+        System.out.println(map2);
 
-        BigDecimal b1 = new BigDecimal(1.2);
-        BigDecimal b2 = new BigDecimal(9.1);
-
-        System.out.println(b1.compareTo(b2));// -1 b1小于b2
-
+        // blank理解为空格 empty理解为空白
+        String bl = " ";
+        String bl2 = "";
+        System.out.println(StringUtils.isBlank(bl));// true
+        System.out.println(StringUtils.isEmpty(bl));// false
+        System.out.println(StringUtils.isBlank(bl2));// true
+        System.out.println(StringUtils.isEmpty(bl2));// true
     }
 }

@@ -2,8 +2,8 @@ package i.am.whp.service;
 
 import i.am.whp.domain.GetDataParam;
 import i.am.whp.model.MyTable;
-import org.springframework.stereotype.Service;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 public interface MyService<T> {
@@ -19,5 +19,7 @@ public interface MyService<T> {
 
     boolean testRollback();
 
-    boolean sqlException();
+    boolean hasReturnException() throws FileNotFoundException;
+
+    void voidReturnException() throws FileNotFoundException;
 }

@@ -48,7 +48,7 @@
 
     <update id="updateStatus" parameterType="java.lang.Integer">
         update my_table
-        set status = -1
+        set status = #{status}
         where id = #{id}
     </update>
 

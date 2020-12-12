@@ -12,9 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.UnexpectedRollbackException;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
 
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -70,7 +72,7 @@ public class MyServiceImpl implements MyService<HashMap<String, String>> {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public int updateAndInsert(MyTable param) {
-        myTableMapper.updateStatus(param.getId());
+        myTableMapper.updateStatus(param.getId(), 1);
         myTableMapper.insert(param);
         return 0;
     }
@@ -83,26 +85,54 @@ public class MyServiceImpl implements MyService<HashMap<String, String>> {
     @Override
     @Transactional
     public boolean testRollback() {
-        myTableMapper.updateStatus(1);
+        myTableMapper.updateStatus(1, 2);
         try {
-            self.sqlException();
+            self.voidReturnException();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-//            log.error("testRollback with error", e);
+            log.error("testRollback with error", e);
         }
         return true;
     }
 
     @Override
     @Transactional
-    public boolean sqlException() {
-        int i = 1 / 0;
-//        throw new UnexpectedRollbackException(
-//                "1111Transaction rolled back because it has been marked as rollback-only1111");
-//        MyTable mapperById = myTableMapper.getById(2);
-//        throw new RuntimeException("error");
-//        mapperById.setName(null);
-//        myTableMapper.insert(mapperById);
+    public boolean hasReturnException() {
+        // 当前事务状态
+        TransactionAspectSupport.currentTransactionStatus();
+        int i = 1 / 0;//ArithmeticException extends RuntimeException
+//        throw new UnexpectedRollbackException("11111111");// extends NestedRuntimeException extends RuntimeException
         return false;
+//        try {
+//            throw new FileNotFoundException("不能被try-catch");
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        } finally {
+//            return false;
+//        }
+
+        // tip：只有Propagation为REQUIRE的时候：形成事务嵌套
+        // 会引起Transaction rolled back because it has been marked as rollback-only的报错
     }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void voidReturnException() throws FileNotFoundException {
+//        int i = 1 / 0;//ArithmeticException extends RuntimeException
+//        throw new UnexpectedRollbackException("11111111");// extends NestedRuntimeException extends RuntimeException
+        throw new FileNotFoundException("不能被try-catch");
+    }
+
+    //------------------事务被try-catch四种情况-------------
+    //----------------------------------------------------
+    //  有无@Tra ｜rollback｜ 异常类型 ｜ 事务传播类别 ｜ 结果  ｜
+    // ---------------------------------------------------
+    //   无     ｜   -    ｜ 运行时异常｜    -     ｜ 不回滚  ｜
+    //   有     ｜   空   ｜ 运行时异常｜ 默/require｜  回滚  ｜Transaction rolled back because it has been marked as rollback-only
+    //   有     ｜   空   ｜ 运行时异常｜  非require ｜ 不回滚 ｜
+    //   有     ｜   空   ｜ 检查异常 ｜ 默/require ｜ 不回滚 ｜
+    //   有     ｜ 检查异常｜ 检查异常 ｜ 默/require ｜  回滚  ｜同上，但是注解一定是加被调方（抛错方）的
+    // ---------------------------------------------------
+    // ps: 1 与有无返回值无关，必须使用代理类调用，方法需是public
+    //     2 加上Transactional之后 默认的rollbackFor为RuntimeException 其余默认请看注解
+
 }

@@ -760,24 +760,25 @@ public class TimeUtil {
         return duringTime / (60 * 1000);
     }
 
-    public static Timestamp getTimeStamp(long time){
+    public static Timestamp getTimeStamp(long time) {
         return new Timestamp(time);
     }
 
     public static Timestamp getTimeBeforeSeconds(int seconds) {
         Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.SECOND, 0-seconds);
+        cal.set(Calendar.SECOND, 0 - seconds);
         return new Timestamp(cal.getTimeInMillis());
     }
 
     /**
      * 两个时间相差距离多少天多少小时多少分多少秒
+     *
      * @param fromDate
      * @param toDate
      * @return {天, 时, 分, 秒}
      */
     public static long[] getIntervalTime(Date fromDate, Date toDate) {
-        if(fromDate == null || toDate == null) {
+        if (fromDate == null || toDate == null) {
             return null;
         }
         long intervalMills = toDate.getTime() - fromDate.getTime();
@@ -785,6 +786,6 @@ public class TimeUtil {
         long hour = (intervalMills / (60L * 60 * 1000) - day * 24);
         long min = ((intervalMills / (60L * 1000)) - day * 24 * 60 - hour * 60);
         long sec = (intervalMills / 1000 - (day * 24 * 60 * 60) - (hour * 60 * 60) - (min * 60));
-        return  new long[]{ day, hour, min, sec };
+        return new long[]{day, hour, min, sec};
     }
 }

@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 /**
  * 如果是 JDK8 的应用，可以使用 Instant代替 Date，LocalDateTime代替 Calendar， DateTimeFormatter代替 SimpleDateFormat，
@@ -43,5 +44,22 @@ public class DateTimeTest {
         System.out.printf("HH:MM:SS格式（24时制）：%tT%n", date);
         //R的使用
         System.out.printf("HH:MM格式（24时制）：%tR", date);
+
+        System.out.println();
+        System.out.println(TimeZone.getDefault()); // Asia/Shanghai
+        // GMT +8
+        System.out.println(TimeZone.getTimeZone("Asia/Shanghai").getDisplayName()); // 中国标准时间
+        System.out.println(TimeZone.getTimeZone("Asia/Shanghai")); // 28800000
+
+        Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
+        System.out.println(calendar);
+        System.out.println(calendar.get(Calendar.ZONE_OFFSET));
+
+        System.out.println(TimeZone.getDefault().getOffset(System.currentTimeMillis()));
+
+        System.out.println(TimeZone.getDefault().getID());
+
+        System.out.println(TimeZone.getTimeZone("GMT+8"));
+        System.out.println(TimeZone.getTimeZone("GMT+8").getID());
     }
 }
