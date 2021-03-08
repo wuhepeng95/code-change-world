@@ -1,8 +1,12 @@
 package reflecttest.changefieldvalue;
 
+import java.util.List;
+
 public class TestBean {
     private int id;
     private String url;
+
+    List<Long> longList;
 
     public int getId() {
         return id;
@@ -18,6 +22,14 @@ public class TestBean {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public List<Long> getLongList() {
+        return longList;
+    }
+
+    public void setLongList(List<Long> longList) {
+        this.longList = longList;
     }
 
     @Override

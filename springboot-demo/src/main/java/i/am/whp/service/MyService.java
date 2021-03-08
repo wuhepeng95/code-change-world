@@ -17,9 +17,11 @@ public interface MyService<T> {
 
     List<MyTable> whereTest(MyTable param);
 
+    boolean testRollbackWrapper();
+
     boolean testRollback();
 
     boolean hasReturnException() throws FileNotFoundException;
 
-    void voidReturnException() throws FileNotFoundException;
+    void voidReturnException() ;
 }

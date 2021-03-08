@@ -1,12 +1,10 @@
+import com.alibaba.fastjson.JSON;
+import static java.util.stream.Collectors.toMap;
 import org.apache.commons.lang.StringUtils;
+import reflecttest.changefieldvalue.TestBean;
+import reflecttest.changefieldvalue.TestBeanDto;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -78,5 +76,25 @@ public class Test {
         System.out.println(StringUtils.isEmpty(bl));// false
         System.out.println(StringUtils.isBlank(bl2));// true
         System.out.println(StringUtils.isEmpty(bl2));// true
+
+        TestBeanDto dto = new TestBeanDto();
+        List<TestBean> testBeans = new ArrayList<>();
+        TestBean testBean = new TestBean();
+        testBean.setUrl("323");
+        testBeans.add(testBean);
+        dto.setTestBeans(testBeans);
+        System.out.println(JSON.toJSONString(dto));
+
+        System.out.println(testBeans.stream().collect(toMap(TestBean::getId, testBean1 -> Optional.ofNullable(testBean1.getLongList()).orElse(new ArrayList<>()))));
+
+        for (TestBean bean : dto.getTestBeans()) {
+            bean.setId(1212);
+        }
+        System.out.println(JSON.toJSONString(dto));
+
+        Map<Long, List<Long>> listMap = new HashMap<>();
+        listMap.put(1L, null);
+        System.out.println(listMap);
+
     }
 }

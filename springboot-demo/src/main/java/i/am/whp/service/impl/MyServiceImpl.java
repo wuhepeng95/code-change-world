@@ -13,10 +13,7 @@ import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.interceptor.TransactionAspectSupport;
-import org.springframework.transaction.support.TransactionSynchronizationManager;
 
-import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -83,24 +80,49 @@ public class MyServiceImpl implements MyService<HashMap<String, String>> {
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
+    public boolean testRollbackWrapper() {
+        myTableMapper.updateStatus(1, 10);
+        boolean b = self.testRollback();
+//        if (!b){
+//            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+//        }
+        // ....
+        return b;
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
     public boolean testRollback() {
-        myTableMapper.updateStatus(1, 2);
+        myTableMapper.updateStatus(1, 11);
         try {
             self.voidReturnException();
+            log.info("setRollbackOnly");
         } catch (Exception e) {
+            //不加 会引起Transaction rolled back because it has been marked as rollback-only的报错
+            // 事务还是需要回滚
+//            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             log.error("testRollback with error", e);
+            return false;
         }
         return true;
     }
 
     @Override
-    @Transactional
-    public boolean hasReturnException() {
-        // 当前事务状态
-        TransactionAspectSupport.currentTransactionStatus();
+    @Transactional(rollbackFor = Exception.class)
+    public void voidReturnException() {
         int i = 1 / 0;//ArithmeticException extends RuntimeException
 //        throw new UnexpectedRollbackException("11111111");// extends NestedRuntimeException extends RuntimeException
+//        throw new FileNotFoundException("不能被try-catch");
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public boolean hasReturnException() {
+        // 当前事务状态
+//            int i = 1 / 0;//ArithmeticException extends RuntimeException
+//        throw new UnexpectedRollbackException("11111111");// extends NestedRuntimeException extends RuntimeException
+        self.voidReturnException();
         return false;
 //        try {
 //            throw new FileNotFoundException("不能被try-catch");
@@ -114,13 +136,6 @@ public class MyServiceImpl implements MyService<HashMap<String, String>> {
         // 会引起Transaction rolled back because it has been marked as rollback-only的报错
     }
 
-    @Override
-    @Transactional(rollbackFor = Exception.class)
-    public void voidReturnException() throws FileNotFoundException {
-//        int i = 1 / 0;//ArithmeticException extends RuntimeException
-//        throw new UnexpectedRollbackException("11111111");// extends NestedRuntimeException extends RuntimeException
-        throw new FileNotFoundException("不能被try-catch");
-    }
 
     //------------------事务被try-catch四种情况-------------
     //----------------------------------------------------
@@ -134,5 +149,6 @@ public class MyServiceImpl implements MyService<HashMap<String, String>> {
     // ---------------------------------------------------
     // ps: 1 与有无返回值无关，必须使用代理类调用，方法需是public
     //     2 加上Transactional之后 默认的rollbackFor为RuntimeException 其余默认请看注解
+    //     3 异常是调用方捕获，如果是被调用方已经捕获，不会影响事务
 
 }

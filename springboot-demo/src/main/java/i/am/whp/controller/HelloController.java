@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
@@ -24,6 +25,14 @@ public class HelloController {
     @RequestMapping("/test")
     @ResponseBody
     public String hello() {
+//        ModelAndView modelAndView = new ModelAndView();
+        return JSON.toJSONString(myService.hi());
+    }
+
+    @RequestMapping(value = "/testList", method = RequestMethod.GET)
+    @ResponseBody
+    public String testList(@RequestParam(name = "employeeCodes", required = false) String[] employeeCodes) {
+        System.out.println(employeeCodes);
 //        ModelAndView modelAndView = new ModelAndView();
         return JSON.toJSONString(myService.hi());
     }
