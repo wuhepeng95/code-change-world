@@ -7,6 +7,9 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.util.CharsetUtil;
 import io.netty.util.ReferenceCountUtil;
 
+/**
+ * 例外的一种写法 channelRead0 => channelRead
+ */
 public class DiscardServerHandler extends ChannelHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
 
