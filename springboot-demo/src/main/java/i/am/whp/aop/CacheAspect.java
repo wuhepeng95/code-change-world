@@ -10,8 +10,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -49,6 +51,12 @@ public class CacheAspect {
             return result;
         }
         Object result = joinPoint.proceed();
+        // result为空时会报转换错误
+        if (result instanceof List) {
+            if (CollectionUtils.isEmpty((List)result)) {
+                return result;
+            }
+        }
         // 如果没有缓存 将结果存入缓存
         // 不加TimeUnit.SECONDS 就变成了offset 前面补偿……
         redisTemplate.opsForValue().set(keyName, result, expireTime, TimeUnit.SECONDS);

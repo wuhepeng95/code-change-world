@@ -17,6 +17,7 @@ public class ControllerExceptionHandler {
 	@ExceptionHandler({Exception.class})
 	@ResponseBody
 	public Map<String, Object> handleException(Exception e) {
+		e.printStackTrace();
 		HashMap<String, Object> result = new HashMap<>();
 		result.put("result", false);
         result.put("msg","后台服务异常");

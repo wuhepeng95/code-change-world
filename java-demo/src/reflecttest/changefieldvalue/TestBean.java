@@ -3,12 +3,12 @@ package reflecttest.changefieldvalue;
 import java.util.List;
 
 public class TestBean {
-    private int id;
+    private Integer id;
     private String url;
 
     List<Long> longList;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

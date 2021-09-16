@@ -13,8 +13,8 @@ import java.util.List;
 public class ArrangementArray {
 
     public static void main(String[] args) {
-        char[] chars = {'A', 'B', 'C'};
-        int[] flags = {0, 0, 0};
+        char[] chars = {'A', 'B', 'C', 'D'};
+        int[] flags = {0, 0, 0, 0};
         ArrangementArray.dfs(chars, flags, 1, new ArrayList<>());
     }
 

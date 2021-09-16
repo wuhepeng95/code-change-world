@@ -97,7 +97,7 @@ Welcome!!
                     success: function (response) {
                         if (response.result) {
                             vue.$message({
-                                message: '调用成功',
+                                message: '调用成功！',
                                 type: 'success'
                             });
                             console.log("loading-----");
@@ -105,7 +105,7 @@ Welcome!!
                             vue.totalCount = response.count;
                         } else {
                             vue.$message({
-                                message: '调用失败' + response.msg,
+                                message: '调用失败：' + response.msg,
                                 type: 'error'
                             });
                         }

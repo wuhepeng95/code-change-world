@@ -1,9 +1,11 @@
 import com.alibaba.fastjson.JSON;
 import static java.util.stream.Collectors.toMap;
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import reflecttest.changefieldvalue.TestBean;
 import reflecttest.changefieldvalue.TestBeanDto;
 
+import java.lang.reflect.Field;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -85,7 +87,7 @@ public class Test {
         dto.setTestBeans(testBeans);
         System.out.println(JSON.toJSONString(dto));
 
-        System.out.println(testBeans.stream().collect(toMap(TestBean::getId, testBean1 -> Optional.ofNullable(testBean1.getLongList()).orElse(new ArrayList<>()))));
+//        System.out.println(testBeans.stream().collect(toMap(TestBean::getId, testBean1 -> Optional.ofNullable(testBean1.getLongList()).orElse(null))));
 
         for (TestBean bean : dto.getTestBeans()) {
             bean.setId(1212);
@@ -95,6 +97,46 @@ public class Test {
         Map<Long, List<Long>> listMap = new HashMap<>();
         listMap.put(1L, null);
         System.out.println(listMap);
+
+
+        TestBean testBean1 = new TestBean();
+        new Test().setField(testBean1, "url", "wwwwwwwww");
+        System.out.println(testBean1);
+
+
+            List<TestBean> lines = new ArrayList<>();
+        TestBean e = new TestBean();
+        e.setId(1);
+            lines.add(e);
+            List<Integer> itemIdList = lines.stream().filter(testBean2 -> testBean2.getId() != null).map(TestBean::getId).distinct().collect(Collectors.toList());
+            System.out.println(itemIdList);
+            System.out.println(CollectionUtils.isNotEmpty(itemIdList));
+
+        String itemIds = lines.stream().map(TestBean::getId).distinct().map(Object::toString).collect(Collectors.joining(","));
+        System.out.println(itemIds);
+
+            List<Long> longs = new ArrayList<>();
+            longs.add(1L);
+        if (longs.size() == 1) {
+            longs.add(longs.get(0));
+        }
+            System.out.println(longs);
+
+
+    }
+
+    public void setField(TestBean bean, String fieldName, String value){
+        bean.setUrl("hhhhh");
+
+        Class<? extends TestBean> clazz = bean.getClass();
+        try {
+            Field field = clazz.getDeclaredField(fieldName);
+            field.setAccessible(true);
+            System.out.println(field.get(bean));
+            field.set(bean, value);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
 
     }
 }
