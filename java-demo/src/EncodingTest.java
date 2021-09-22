@@ -1,3 +1,4 @@
+import cn.hutool.core.util.HexUtil;
 import sockettest.URLDemo;
 
 import java.io.UnsupportedEncodingException;
@@ -41,9 +42,14 @@ public class EncodingTest {
         System.out.println("十六进制转为二进制:" + Integer.toBinaryString(hex));
         System.out.println("&#19978;纯十进制:" + Integer.valueOf("100111000001010", 2));
 
-        /**
-         * URL参数编码
-         */
+        // 输出 efbfbdefbfbd
+        System.out.println(HexUtil.encodeHex("��", Charset.forName("UTF-8")));
+        // 借助 hutool 转成二进制
+        byte[] testBytes = HexUtil.decodeHex("efbfbdefbfbd");
+        // 使用 GBK 解码
+        String testResult = new String(testBytes, Charset.forName("GBK"));
+        // 输出锟斤拷
+        System.out.println(testResult);
     }
 
     public static String byteToBinaryString(byte b) {

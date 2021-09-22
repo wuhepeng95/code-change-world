@@ -1,5 +1,5 @@
-import i.am.whp.bean.WhpTest2;
-import i.am.whp.dao.WhpTestDao;
+import i.am.whp.bean.MyTable;
+import i.am.whp.dao.MyTableDao;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,19 +15,20 @@ import java.util.concurrent.*;
 @ContextConfiguration(locations = "classpath:applicationContext.xml")
 public class TestBase {
     @Autowired
-    WhpTestDao whpTestDao;
+    MyTableDao myTableDao;
 
     @Test
     public void list() {
-        Map<String, Object> param = new HashMap<>();
-        param.put("pageSize", 10);
-        param.put("startIndex", 1);
-        List<WhpTest2> getall = whpTestDao.getall(param);
-        Integer count = whpTestDao.count(param);
-        System.out.println(count);
-        for (WhpTest2 whpTest : getall) {
-            System.out.println(whpTest.toString());
-        }
+//        Map<String, Object> param = new HashMap<>();
+//        param.put("pageSize", 10);
+//        param.put("startIndex", 0);
+//        List<MyTable> getall = myTableDao.getall(param);
+//        Integer count = myTableDao.count(param);
+//        System.out.println(count);
+//        for (MyTable whpTest : getall) {
+//            System.out.println(whpTest.toString());
+//        }
+        myTableDao.selectList(null);
     }
 
     @Test
@@ -42,22 +43,22 @@ public class TestBase {
         // Runnable run 方法返回为空，Callable call 方法返回范型V
 
         // 原生写法
-        Callable<List<WhpTest2>> call1 = new Callable<List<WhpTest2>>() {
+        Callable<List<MyTable>> call1 = new Callable<List<MyTable>>() {
             @Override
-            public List<WhpTest2> call() throws Exception {
+            public List<MyTable> call() throws Exception {
                 // 先暂停两秒
                 System.out.println("我是" + Thread.currentThread().getName() + "，我暂停了两秒。如果想get()我的值，得先等我执行完return ^.^");
                 TimeUnit.SECONDS.sleep(2);
-                return whpTestDao.getall(param);
+                return myTableDao.getall(param);
             }
         };
 
         // lambda最简写法
-        Callable<Object> call2 = () -> whpTestDao.count(param);
+        Callable<Object> call2 = () -> myTableDao.count(param);
 
         // submit后执行 返回结果
         // 注意 submit之后后吞异常 返回null
-        Future<List<WhpTest2>> submit = executorService.submit(call1);
+        Future<List<MyTable>> submit = executorService.submit(call1);
         Future<Object> submit1 = executorService.submit(call2);
 
         // 输出结果

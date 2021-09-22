@@ -1,3 +1,4 @@
+import cn.hutool.core.util.PinyinUtil;
 import com.alibaba.fastjson.JSON;
 import static java.util.stream.Collectors.toMap;
 import org.apache.commons.collections4.CollectionUtils;
@@ -123,6 +124,7 @@ public class Test {
             System.out.println(longs);
 
 
+        System.out.println(PinyinUtil.getPinYin("你好"));
     }
 
     public void setField(TestBean bean, String fieldName, String value){
