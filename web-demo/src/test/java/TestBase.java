@@ -1,3 +1,5 @@
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.conditions.segments.MergeSegments;
 import i.am.whp.bean.MyTable;
 import i.am.whp.dao.MyTableDao;
 import org.junit.Test;
@@ -19,6 +21,7 @@ public class TestBase {
 
     @Test
     public void list() {
+        // mybatis
 //        Map<String, Object> param = new HashMap<>();
 //        param.put("pageSize", 10);
 //        param.put("startIndex", 0);
@@ -28,7 +31,30 @@ public class TestBase {
 //        for (MyTable whpTest : getall) {
 //            System.out.println(whpTest.toString());
 //        }
-        myTableDao.selectList(null);
+
+        //   mybatis-plus
+//        System.out.println(myTableDao.insert(new MyTable("2", 2)));
+        System.out.println(myTableDao.selectList(new Wrapper<MyTable>() {
+            @Override
+            public MyTable getEntity() {
+                return null;
+            }
+
+            @Override
+            public MergeSegments getExpression() {
+                return null;
+            }
+
+            @Override
+            public void clear() {
+
+            }
+
+            @Override
+            public String getSqlSegment() {
+                return null;
+            }
+        }));
     }
 
     @Test

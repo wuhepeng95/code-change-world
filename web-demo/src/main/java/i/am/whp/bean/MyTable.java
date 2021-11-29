@@ -1,7 +1,5 @@
 package i.am.whp.bean;
 
-import com.baomidou.mybatisplus.annotation.TableName;
-
 import java.util.Date;
 
 
@@ -16,7 +14,6 @@ import java.util.Date;
  * ENGINE=InnoDB
  * DEFAULT CHARSET=utf8mb4;
  */
-@TableName("my_table")
 public class MyTable {
 
     private Integer id;
@@ -56,6 +53,13 @@ public class MyTable {
         this.createTime = createTime;
     }
 
+    public MyTable() {
+    }
+
+    public MyTable(String name, Integer status) {
+        this.name = name;
+        this.status = status;
+    }
 
     @Override
     public String toString() {

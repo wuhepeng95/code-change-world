@@ -26,20 +26,27 @@
         <property name="maxWait" value="${maxWait}"/>
     </bean>
     <!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <!--    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">-->
+    <!--        <property name="dataSource" ref="dataSource"/>-->
+    <!--        &lt;!&ndash; 自动扫描mapping.xml文件 &ndash;&gt;-->
+    <!--        <property name="mapperLocations" value="classpath:mapper/*.xml"/>-->
+    <!--        <property name="configLocation" value="classpath:/mybatis-config.xml"/>-->
+    <!--    </bean>-->
+    <!--    &lt;!&ndash; DAO接口所在包名，Spring会自动查找其下的类 &ndash;&gt;-->
+    <!--    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
+    <!--        <property name="basePackage" value="i.am.whp.dao"/>-->
+    <!--        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>-->
+    <!--    </bean>-->
+    <!--    &lt;!&ndash; (事务管理)transaction manager, use JtaTransactionManager for global tx &ndash;&gt;-->
+    <!--    <bean id="transactionManager"-->
+    <!--          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
+    <!--        <property name="dataSource" ref="dataSource"/>-->
+    <!--    </bean>-->
+
+    <!-- SqlSessionFactory Config -->
+    <bean id="sqlSessionFactory" class="com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <!-- 自动扫描mapping.xml文件 -->
         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
-        <property name="configLocation" value="classpath:/mybatis-config.xml"/>
     </bean>
-    <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="i.am.whp.dao"/>
-        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-    </bean>
-    <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
-    <bean id="transactionManager"
-          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource"/>
-    </bean>
+
 </beans>
