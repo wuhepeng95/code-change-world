@@ -16,7 +16,7 @@
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
-            <version>4.1.10.Final</version>
+            <version>4.1.42.Final</version>
         </dependency>
 
         <!--Oracle 官方提供的 JMH（Java Microbenchmark Harness，JAVA 微基准测试套件）框架-->
