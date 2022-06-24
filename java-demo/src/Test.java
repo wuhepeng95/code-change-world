@@ -7,6 +7,8 @@ import reflecttest.changefieldvalue.TestBean;
 import reflecttest.changefieldvalue.TestBeanDto;
 
 import java.lang.reflect.Field;
+import java.math.BigDecimal;
+import java.math.MathContext;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -28,7 +30,8 @@ public class Test {
         // String的intern()方法会查找在常量池中是否存在一份equal相等的字符串,如果有则返回该字符串的引用,如果没有则添加自己的字符串进入常量池。
 
         // java正在取第一个匹配到的参数
-        String reg = "^<[^>^<]*>$";
+        String reg2 = "^<[^>^<]*>$";
+        String reg = "^[a-zA-Z]+[a-zA-Z0-9_]*$";
         Pattern pattern = Pattern.compile(reg);
         Matcher matcher = pattern.matcher("胜多负少生<不知道222>巅峰大是大非<不知道><你好啊>");
         while (matcher.find()) {
@@ -125,6 +128,12 @@ public class Test {
 
 
         System.out.println(PinyinUtil.getPinYin("你好"));
+
+        BigDecimal bigDecimal = new BigDecimal("-100", MathContext.DECIMAL64);
+        System.out.println(bigDecimal.abs());
+
+
+        System.out.println(new Date());
     }
 
     public void setField(TestBean bean, String fieldName, String value){

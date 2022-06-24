@@ -8,6 +8,9 @@ import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.cglib.proxy.Enhancer;
+import org.springframework.cglib.proxy.MethodInterceptor;
+import org.springframework.cglib.proxy.MethodProxy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.io.ClassPathResource;
@@ -20,6 +23,8 @@ import org.springframework.web.servlet.config.annotation.DefaultServletHandlerCo
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+import java.lang.reflect.Method;
 
 //@SpringBootApplication//表示为一个springboot应用：是下面三个注解的合集
 @EnableWebMvc
@@ -42,7 +47,26 @@ public class DemoApplication extends SpringBootServletInitializer implements Web
     public static void main(String[] args) {
         log.info("start springboot project : springboot-demo");
         LogUtils.initGlobalMDC();
-        SpringApplication.run(DemoApplication.class, args);
+//        SpringApplication.run(DemoApplication.class, args);
+
+
+        int i = 0;
+        while (i >= 0) {
+            Enhancer enhancer = new Enhancer();
+            enhancer.setSuperclass(DemoApplication.class);
+            enhancer.setUseCache(false);
+            enhancer.setCallback(new MethodInterceptor() {
+                @Override
+                public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
+
+                    return methodProxy.invokeSuper(o, args);
+                }
+            });
+            i++;
+            System.out.println(i);
+            enhancer.create();
+        }
+
 
 //        DefaultResourceLoader resourceLoader = new DefaultResourceLoader();
 //        resourceLoader.addProtocolResolver(new ProtocolResolver() {
@@ -80,7 +104,7 @@ public class DemoApplication extends SpringBootServletInitializer implements Web
         configurer.enable();
     }
 
-//     视图解析器配置
+    //     视图解析器配置
     @Bean
     public InternalResourceViewResolver setupViewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
