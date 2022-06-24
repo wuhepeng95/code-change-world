@@ -27,6 +27,7 @@
         <module>web-demo</module>
         <module>webservice-demo</module>
         <module>springboot-demo</module>
+        <module>springboot-extend</module>
         <module>netty-demo</module>
     </modules>
 
