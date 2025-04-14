@@ -58,7 +58,7 @@ public class TestRedissonController {
         //10s钟自动解锁，自动解锁时间一定要大于业务执行时间
         //问题:lock.lock(10, TimeUnit.SECONDS); 在锁时间到了以后，不会自动续期
         //1、如果我们传递了锁的超时时间，就发送给redis执行脚本，进行占锁，默认超时就 我们指定的时间
-        //2、如果我们未指定超时间件，就使用 30 * 1000【LockWatchdogTimeout看门狗的 默认时间】
+        //2、如果我们未指定超时间，就使用 30 * 1000【LockWatchdogTimeout看门狗的 默认时间】
         // 只要占锁成功，就会启动一个定时任务。【重新给锁设置过期时间，新的过期时间就 是看门狗的默认时间】,每隔10s都会自动再次续期，续成满时间
         // internalLockLeaseTime / 3 【看门狗时间 / 3，10s】 26
         //最佳实战

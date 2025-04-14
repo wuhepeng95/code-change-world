@@ -32,6 +32,7 @@ public class Test {
         // java正在取第一个匹配到的参数
         String reg2 = "^<[^>^<]*>$";
         String reg = "^[a-zA-Z]+[a-zA-Z0-9_]*$";
+
         Pattern pattern = Pattern.compile(reg);
         Matcher matcher = pattern.matcher("胜多负少生<不知道222>巅峰大是大非<不知道><你好啊>");
         while (matcher.find()) {
@@ -134,6 +135,16 @@ public class Test {
 
 
         System.out.println(new Date());
+
+
+        int i=10,j=18, k=30;
+        switch(j-i){
+            case 8 :k++;
+            case 9 : k+=2;
+            case 10: k+=3;
+            default : k/=j;
+        }
+        System.out.println(k);
     }
 
     public void setField(TestBean bean, String fieldName, String value){
